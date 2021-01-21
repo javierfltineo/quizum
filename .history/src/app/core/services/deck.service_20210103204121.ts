@@ -1,0 +1,37 @@
+﻿import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { environment } from '../../../environments/environment';
+import { Deck } from '../models/deck';
+import { OdooRPCService } from './odoorpc.service';
+
+@Injectable({ providedIn: 'root' })
+export class DeckService {
+    private deckSubject: BehaviorSubject<Deck>;
+    public deck: Observable<Deck>;
+    private router: Router;
+    private http: HttpClient;
+
+    constructor(private odooService: OdooRPCService) {
+        this.deckSubject = new BehaviorSubject<Deck>(JSON.parse(localStorage.getItem('deck')));
+        this.deck = this.deckSubject.asObservable();
+    }
+
+    public get deckValue(): Deck {
+        return this.deckSubject.value;
+    }
+
+
+
+    getAll() {
+        return [];
+    }
+
+    getById(id: string) {
+        return this.http.get<Deck>(`${environment.apiUrl}/users/${id}`);
+    }
+
+}

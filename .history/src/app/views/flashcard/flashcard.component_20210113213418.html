@@ -1,0 +1,28 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card" *ngIf="!start_date">
+        <div class="card-header">
+          Flashcard
+        </div>
+        <div class="card-body">
+          <button (click)="start_game($event)">Empezar!</button>
+        </div>
+      </div>
+
+      <div class="card" *ngIf="start_date && !end_date">
+        <div class="card-header">
+          <p>{{current_question.name}}</p>
+        </div>
+        <div class="card-body">
+            <button *ngFor="let option of current_question.options">{{option.name}}</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-12 text-center">
+      <button (click)="next_question($event)">Siguiente</button>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+</div>
