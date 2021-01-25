@@ -1,0 +1,38 @@
+<ion-content>
+  <ion-grid class="ion-no-padding" *ngIf="data != null">
+    <ion-row>
+      <ion-col class="ion-no-padding" size="12">
+        <ion-list>
+          <ion-list-header>
+            <h1 class="text-size-sm font-regular text-color-secondary">
+              {{data.headerTitle}}</h1>
+          </ion-list-header>
+          <ion-item class="default-item box-shadow"
+          lines="none" *ngFor="let item of data.items"
+          (click)="onItemClickFunc(item, $event)">
+            <!--Avatar-->
+            <ion-thumbnail>
+              <img [src]="item.avatar">
+            </ion-thumbnail>
+            <ion-label class="ion-padding-start">
+              <!--Title-->
+              <h2 class="text-size-md text-color-primary font-bold ion-text-wrap">
+                {{item.title}}</h2>
+              <!--Subtitle-->
+              <h3 class="text-size-sm text-color-secondary font-regular ion-text-wrap">
+                {{item.subtitle}}</h3>
+            </ion-label>
+            <ion-button class="button-top-icon ion-text-capitalize" fill="clear" slot="end">
+              <ion-label>
+                <ion-icon class="icon-medium text-color-accent"
+                [name]="item.iconButton"></ion-icon>
+                <h2 class="text-size-sm text-color-accent font-bold">
+                  {{item.follow}}</h2>
+              </ion-label>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

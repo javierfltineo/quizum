@@ -1,0 +1,28 @@
+<!--Theme Toggle -- COMPONENT 2 -->
+<ion-grid class="ion-no-padding">
+  <ion-row>
+    <ion-col class="ion-no-padding" size="12">
+      <ion-list>
+        <!-- Header-title -->
+        <ion-list-header>
+          <h1 class="text-size-md text-color-secondary font-regular ion-text-capitalize">
+            {{data.title}}</h1>
+        </ion-list-header>
+        <!-- List -->
+        <ion-item class="default-item box-shadow" lines="none"
+        *ngFor="let entry of data.items">
+          <ion-toggle [value]="entry.id"
+          (ionChange)="onItemClickFunc(entry)"
+          [checked]="entry.isChecked">
+          </ion-toggle>
+          <ion-label class="ion-padding-start">
+            <h3 class="text-size-sm text-color-primary font-regular">
+              {{entry.subtitle}}</h3>
+            <h3 class="text-size-md text-color-primary font-bold">
+              {{entry.title}}</h3>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>

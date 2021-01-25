@@ -1,0 +1,24 @@
+/* Style component 2
+========================================================*/
+
+ion-item {
+  --padding-start: 0 !important;
+  --inner-padding-end: 0;
+  --background: transparent;
+
+  ion-input {
+    --background: transparent !important;
+    --padding-bottom: 10px;
+    --padding-end: 0;
+    --padding-start: 0;
+    --padding-top: 10px;
+    margin: 10px 0 !important;
+    width: 100%;
+    border-bottom: 1px solid var(--cs-background-border, #CBCBCB);
+  }
+
+  ion-label {
+    margin: 5px 0 !important;
+    transform: none;
+  }
+}

@@ -1,0 +1,46 @@
+<ion-app>
+  <!-- Header -->
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>{{data.toolbarTitle}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <!-- Content -->
+  <ion-content class="transparent">
+    <!-- FORMS --COMPONENT 1 -->
+    <ion-grid class="ion-padding" *ngIf="data != null">
+      <ion-row>
+        <ion-col size="12">
+          <ion-item class="box-shadow border-radius input" lines="none">
+            <ion-input type="text"
+            [(ngModel)]="item.id">
+          </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item class="box-shadow border-radius input" lines="none">
+            <ion-input type="text"
+            [(ngModel)]="item.name">
+          </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" class="textarea" style="max-height: 135px;">
+          <ion-item class="box-shadow border-radius input" lines="none" style="max-height: 135px;">
+            <ion-textarea rows="100%" cols="1"
+            [(ngModel)]="item.description">
+          </ion-textarea>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" class="ion-text-end">
+          <ion-button class="default-button box-shadow ion-text-capitalize"
+          expand="block" (click)="onSubmitFunc($event)">{{data.submitButton}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-content>
+</ion-app>

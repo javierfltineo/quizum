@@ -1,0 +1,66 @@
+<!-- ACTION SHEET --COMPONENT 1-->
+<ion-page class="ion-page">
+  <!--- Header -->
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>{{data.toolbarTitle}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content parallax-header (ionScroll)="logScrolling($event)"
+  [scrollEvents]="true">
+    <!-- Parallax Big Image -->
+    <div class="header-image">
+      <div class="background-size" 
+      [ngStyle]="{'background-image': 'url(' + data.headerImage + ')'}">
+        <div class="info-section">
+          <ion-item class="transparent" lines="none"
+          *ngFor="let item of data.items;let i = index">
+            <ion-label>
+              <div class="clearfix"></div>
+              <h1 class="text-size-xl text-color-primary font-bold
+              ion-float-start ion-text-wrap">{{item.title}}</h1>
+              <div class="clearfix"></div>
+              <h2 class="text-size-md text-color-primary font-regular
+              ion-float-start ion-text-wrap">{{item.subtitle}}</h2>
+              <div class="clearfix"></div>
+            </ion-label>
+            <ion-label slot="end">
+              <!-- Share Button --->
+              <ion-button class="button-action-shit ion-float-end"
+              (click)="presentActionSheet(data, $event)">
+                <ion-icon [name]="data.shareIcon"></ion-icon>
+              </ion-button>
+            </ion-label>
+          </ion-item>
+        </div>
+      </div>
+      <div class="box-shadow ion-padding-bottom ion-padding-top"
+      *ngFor="let item of data.items;let i = index">
+        <span class="text-size-lg text-color-accent font-bold
+        ion-padding-end ion-float-end">{{item.button}}</span>
+        <span class="new-category ion-text-uppercase ion-float-start
+        ion-margin-bottom ion-padding-end">{{item.category}}</span>
+        <div class="clearfix"></div>
+        <h2 class="text-size-md text-color-secondary font-regular
+        ion-no-margin ion-padding-start">{{item.description}}</h2>
+      </div>
+    </div>
+    <!--Content-->
+    <ion-grid class="ion-no-padding" *ngIf="data != null && data.items != null">
+      <ion-row>
+        <ion-col class="ion-no-padding" size="12" *ngFor="let item of data.items"
+        (click)="onItemClickFunc(item, $event)">
+          <!--Content With Text-->
+          <ion-item lines="none" class="transparent"
+          *ngFor="let productDescription of item.productDescriptions">
+            <p class="text-size-md text-color-secondary font-regular ion-text-wrap">
+              {{productDescription.description}}</p>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-page>

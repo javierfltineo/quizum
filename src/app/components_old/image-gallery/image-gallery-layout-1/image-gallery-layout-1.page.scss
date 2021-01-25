@@ -1,0 +1,23 @@
+ion-card {
+  height: 170px;
+  position: relative;
+
+  &::after {
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, var(--cs-gradient-secondary)), to(black));
+    background: linear-gradient(to bottom, var(--cs-gradient-secondary) 1%, black 100%);
+  }
+
+  ion-card-content {
+    bottom: 10px;
+    right: 0;
+    left: 0;
+    position: absolute;
+  }
+}

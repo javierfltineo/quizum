@@ -1,0 +1,43 @@
+<!-- ANIMATION --COMPONENT 8 -->
+<ion-grid class="ion-no-padding" *ngIf="data && data.items">
+  <ion-row appAnimateItems className="zoomIn">
+    <ion-col class="ion-no-padding animation-normal opacity-0" size="12">
+      <ion-card class="header-image background-size ion-no-margin"
+      [ngStyle]="{'background-image': 'url(' + data.headerImage + ')'}">
+        <div class="parallax-title-section text-center">
+          <!--Title parallax-->
+          <h2 class="text-size-xl text-color-primary font-bold" *ngIf="data != null">
+            {{data.title}}</h2>
+        </div>
+      </ion-card>
+    </ion-col>
+    </ion-row>
+    <ion-row>
+    <ion-col class="ion-no-padding box-shadow " size="12">
+      <ion-list class="ion-no-margin" appAnimateItems className="slideInLeft">
+        <ion-item class="default-item box-shadow animation-normal opacity-0" lines="none" *ngFor="let item of data.items"
+        (click)="onItemClickFunc(item)">
+          <!--Content Avatar-->
+          <ion-thumbnail>
+            <img [src]="item.image">
+          </ion-thumbnail>
+          <!-- Ttile and Subtitle -->
+          <ion-label class="ion-padding-start">
+            <h2 class="text-size-md text-color-primary font-bold ion-text-wrap">
+              {{item.title}}</h2>
+            <h3 class="text-size-sm text-color-secondary font-regular ion-text-wrap">
+              {{item.subtitle}}</h3>
+          </ion-label>
+          <ion-button class="button-top-icon ion-text-capitalize" fill="clear" slot="end">
+            <ion-label>
+              <ion-icon class="icon-medium text-color-accent" [name]="item.iconButton">
+              </ion-icon>
+              <h2 class="text-size-sm text-color-accent font-bold">
+                {{item.button}}</h2>
+            </ion-label>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>

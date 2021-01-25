@@ -1,0 +1,60 @@
+<!-- ACTION SHEET --COMPONENT 2-->
+<ion-page class="ion-page">
+  <!--- Header -->
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>{{data.toolbarTitle}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!--- Header Big Image-->
+  <ion-content (ionScroll)="logScrolling($event)" [scrollEvents]="true" parallax-header>
+    <div class="header-image background-size"
+    [ngStyle]="{'background-image': 'url(' + data.headerImage + ')'}">
+    </div>
+    <!-- Content -->
+    <ion-grid class="ion-no-padding" *ngIf="data != null">
+      <ion-row class="ion-padding-start ion-padding-end">
+        <ion-col class="background-primary ion-no-padding ion-text-center avatar-info" size="12">
+          <h2 class="text-size-xl text-color-secondary font-bold ion-no-margin
+          ion-text-wrap ion-padding-top ion-padding-bottom">{{data.title}}</h2>
+          <!--Avatar-->
+          <ion-thumbnail>
+            <img [src]="data.avatar">
+          </ion-thumbnail>
+          <ion-button class="button-action-shit ion-float-end"
+          (click)="presentActionSheet(data, $event)">
+            <ion-icon [name]="data.shareIcon"></ion-icon>
+          </ion-button>
+          <p class="text-size-sm text-color-secondary font-regular ion-text-wrap avatarName">
+            {{data.avatarName}}</p>
+          <h3 class="text-size-md text-color-secondary font-regular ion-text-wrap">
+            {{data.subtitle}}</h3>
+          <ion-button class="button-icon ion-text-capitalize">
+            <ion-icon slot="start" class="icon-medium" [name]="data.iconLike">
+            </ion-icon>
+            {{data.numberLike}}
+          </ion-button>
+          <ion-button class="button-icon ion-text-capitalize">
+            <ion-icon slot="start" class="icon-medium " [name]="data.iconComment">
+            </ion-icon>
+            {{data.numberCommnet}}
+          </ion-button>
+        </ion-col>
+        <ion-col class="background-primary" size="12" *ngFor="let item of data.items">
+          <ion-item class="transparent ion-padding-end" lines="none">
+            <ion-label class="ion-text-center">
+              <p class="text-size-xl text-color-secondary font-semi-bold
+              ion-no-margin ion-text-wrap ion-padding-bottom">{{item.title}}</p>
+              <p class="text-size-sm text-color-secondary font-regular ion-text-wrap">
+                {{item.subtitle}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-page>

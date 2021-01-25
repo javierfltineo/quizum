@@ -1,0 +1,1073 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+//////////////////////////////////////////////////
+// Theme: Ionic 4 UI Theme/Template App - Zekky
+// Web Site: https://csform.com/
+// Author: CSFORM
+// Email support:  dev@csform.com
+//////////////////////////////////////////////////
+
+/** Ionic CSS Variables **/
+:root {
+
+  /* Settings Fonts Size And Icon Size
+      =======================================================
+      =======================================================*/
+
+  --fallback-color: red;
+  --h1-font-size: 24px;
+  --h2-font-size: 20px;
+  --h3-font-size: 17px;
+  --h4-font-size: 16px;
+  --h5-font-size: 15px;
+  --h6-font-size: 12px;
+  --text-font-size: 14px;
+
+  /* Settings Fonts Size Icon
+      =======================================================
+      =======================================================*/
+
+  --icon-size-small: 17px;
+  --icon-size-medium: 22px;
+  --icon-size-large: 32px;
+  --icon-size-extra-large: 48px;
+
+  /* Settings Color Background Our App
+    =======================================================
+    =======================================================*/
+
+  --cs-background-primary: #23222B;
+  --cs-background-secondary: #32313B;
+  --cs-background-accent: #FF9900;
+  --cs-background-dark: #71757E;
+  --cs-background-border: #CBCBCB;
+  --cs-background-borderDefaultButton: #6A491D;
+
+  /* Settings Color Text Our App
+    =======================================================
+    =======================================================*/
+
+  --cs-text-primary: #ffffff;
+  --cs-text-secondary: #CBCBCB;
+  --cs-text-light: #23222B;
+  --cs-text-accent: #FF9900;
+
+
+  /* Settings Color Gradient Our App
+=======================================================
+=======================================================*/
+
+--cs-gradient-primary: rgba(255,238,0,1);
+--cs-gradient-secondary: rgb(0, 0, 0, 0);
+--cs-gradient-accent: rgba(255,153,0,1);
+--cs-gradient-linear: linear-gradient(to left, var(--cs-gradient-primary) 0%, var(--cs-gradient-accent) 100%);
+
+  /* Settings Size Avatar
+    =======================================================
+    =======================================================*/
+
+  --size-avatar: 72px;
+
+  /* Settings Size Thumbnail
+    =======================================================
+    =======================================================*/
+
+  --size-thumbnail: 78px;
+
+  /* Settings Border Radius
+    =======================================================
+    =======================================================*/
+
+  --border-radius: 8px;
+
+  /* Settings Color Icon
+    =======================================================
+    =======================================================*/
+
+  --cs-icon-color-primary: #ffffff;
+  --cs-icon-color-secondary: #CBCBCB;
+  --cs-icon-color-accent: #FF9900;
+
+}
+
+/* INCLUDE FONTS
+=======================================================
+=======================================================*/
+@import "fontello";
+@import "fonts";
+@import "animation";
+@import "rtl";
+
+/* ODER COLOR COMBINATION
+=======================================================
+=======================================================*/
+@import "themes-color/turbo-lime-gradient";
+@import "themes-color/turbo";
+@import "themes-color/heliotrope";
+@import "themes-color/persimmon";
+@import "themes-color/orange-peal-turbo-gradient";
+@import "themes-color/bright-turquoise";
+@import "themes-color/orange-peel";
+@import "themes-color/lime";
+@import "themes-color/dodger-blue";
+@import "themes-color/international-orange-gradient";
+
+/* Setting Avatar
+=======================================================
+=======================================================*/
+
+ion-avatar {
+  height: var(--size-avatar, 72px);
+  width: var(--size-avatar, 72px);
+}
+
+.ios {
+  ion-avatar {
+    margin: 8px 0;
+  }
+}
+
+ion-item {
+  --background-hover: transparent;
+}
+
+/* Setting Thumbnail
+=======================================================
+=======================================================*/
+
+ion-thumbnail {
+  --border-radius: 8px;
+  height: var(--size-thumbnail, 78px);
+  width: var(--size-thumbnail, 78px);
+}
+.ios {
+  ion-thumbnail {
+    margin: 8px 0;
+  }
+}
+
+/* SETTINGS ION-HEADER
+=======================================================
+=======================================================*/
+
+.header-md:after {
+  background-image: none !important;
+}
+
+/* SETTINGS TOOLBAR
+=======================================================
+=======================================================*/
+
+ion-toolbar {
+  --background: var(--cs-background-primary, #23222B);
+  --color: var(--cs-text-accent, #FF9900);
+  --border-color: transparent;
+
+  [slot=start] {
+    margin-inline-end: 0;
+  }
+
+  .ios {
+    ion-back-button,
+    ion-menu-button {
+      --color: var(--cs-text-accent, #FF9900);
+    }
+  }
+
+  ion-title {
+    font-weight: 600 !important;
+    font-size: var(--h3-font-size, 17px) !important;
+  }
+}
+
+.margin-half {
+  margin: 16px 8px 0;
+}
+
+.padding-half {
+  padding: 8px;
+}
+
+/* INCLUDE FONTS FOR APP
+=======================================================
+=======================================================*/
+body {
+  --ion-font-family: 'Jura', sans-serif;
+}
+
+/* SETTINGS FONT SIZE
+=======================================================
+=======================================================*/
+
+.text-size-xl {
+  font-size: var(--h1-font-size, 24px) !important;
+  line-height: 29px;
+  letter-spacing: 1px;
+}
+
+.text-size-lg {
+  font-size: var(--h2-font-size, 20px) !important;
+  line-height: 27px;
+  letter-spacing: 1px;
+}
+
+.text-size-md {
+  font-size: var(--h3-font-size, 17px) !important;
+  line-height: 22px;
+  letter-spacing: 1px;
+}
+
+.text-size-xs {
+  font-size: var(--h4-font-size, 16px) !important;
+  line-height: 20px;
+  letter-spacing: 1px;
+}
+
+.text-size-sm {
+  font-size: var(--h5-font-size, 15px) !important;
+  line-height: 18px;
+  letter-spacing: 1px;
+}
+
+.text-size-sd {
+  font-size: var(--h6-font-size, 12px) !important;
+  line-height: 18px;
+  letter-spacing: 1px;
+}
+
+.text-size-p {
+  font-size: var(--text-font-size, 14px) !important;
+  line-height: 20px;
+  letter-spacing: 1px;
+}
+
+.text-nowrap {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* SETTINGS FONT WEIGHT
+=======================================================
+=======================================================*/
+
+.font-light {
+  font-weight: 300 !important;
+}
+
+.font-regular {
+  font-weight: 400 !important;
+}
+
+.font-medium {
+  font-weight: 500 !important;
+}
+
+.font-semi-bold {
+  font-weight: 600 !important;
+}
+
+.font-bold {
+  font-weight: 700 !important;
+}
+
+/* SETTINGS COLOR
+=======================================================
+=======================================================*/
+
+.text-color-primary {
+  color: var(--cs-text-primary, #ffffff) !important;
+}
+
+.text-color-secondary {
+  color: var(--cs-text-secondary, #CBCBCB) !important;
+}
+
+.text-color-accent {
+  color: var(--cs-text-accent, #FF9900) !important;
+}
+
+.text-color-light {
+  color: var(--cs-text-light, #23222B) !important;
+}
+
+/* SETTINGS COLOR BACKGROUND OUR APP
+=======================================================
+=======================================================*/
+
+ion-page {
+  background: var(--cs-background-primary, #23222B);
+}
+
+ion-content {
+  --background: var(--cs-background-primary, #23222B);
+}
+
+ion-list {
+  padding-top: 0 !important;
+  background: var(--cs-background-primary, #23222B) !important;
+}
+
+/* SETTINGS ITEM SLIDING
+=======================================================
+=======================================================*/
+
+ion-item-option {
+  --background: var(--cs-background-primary, #23222B);
+  width: auto;
+}
+
+/* SETTINGS ITEM
+=======================================================
+=======================================================*/
+
+ion-item {
+  --background-hover: transparent;
+  --background-activated: transparent;
+  --background: transparent;
+  --background-focused: transparent;
+  --ripple-color: transparent;
+}
+
+.default-item {
+  --background-hover: transparent;
+  --background: var(--cs-background-secondary, #32313B);
+  border-radius: 8px;
+  margin: 8px 8px !important;
+  width: calc(100% - 16px) !important;
+}
+
+/* SETTINGS MAIN MENU
+=======================================================
+=======================================================*/
+
+.ion-menu-toggle,
+ion-menu-toggle {
+  .icon-small {
+    margin-right: 10px;
+  }
+
+  ion-label {
+    overflow: hidden !important;
+
+    h1 {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+/* SETTINGS COLOR AND SIZE ICON
+=======================================================
+=======================================================*/
+
+.icon-small {
+  color: var(--cs-icon-color-accent, #FF9900);
+  font-size: var(--icon-size-small, 17px);
+}
+
+.icon-medium {
+  color: var(--cs-icon-color-secondary, #CBCBCB);
+  font-size: var(--icon-size-medium, 22px);
+}
+
+.icon-large {
+  color: var(--cs-icon-color-primary, #ffffff);
+  font-size: var(--icon-size-large, 32px);
+}
+
+.icon-extra-large {
+  color: var(--cs-icon-color-primary, #ffffff);
+  font-size: var(--icon-size-extra-large, 48px);
+}
+
+.icon-round {
+  padding: 10px;
+  background: var(--cs-background-accent, #FF9900);
+  color: var(--cs-icon-color-primary, #ffffff);
+  font-size: var(--icon-size-large, 32px);
+  border-radius: 50%;
+}
+
+/* SETTINGS BUTTON SIZE
+=======================================================
+=======================================================*/
+
+.default-button {
+  --color: var(--cs-text-light, #23222B) ;
+  --background: var(--cs-gradient-linear, #FF9900) !important;
+  background: var(--cs-gradient-linear, #FF9900) !important;
+  border: 3px solid var(--cs-background-borderDefaultButton, #6A491D) !important;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  --padding-start: 10px;
+  --padding-end: 10px;
+   border-radius: 8px;
+  --border-radius: 8px;
+  --box-shadow: none;
+  font-size: var(--h5-font-size);
+  font-weight: bold;
+  height: auto;
+  --background-hover: var(--cs-gradient-linear, #FF9900) !important;
+  --color-hover:  var(--cs-text-light, #23222B) !important;
+  --color-activated: var(--cs-text-light, #23222B) !important;
+  --color-focused: var(--cs-text-light, #23222B) !important;
+
+}
+
+.button-top-icon {
+  height: auto;
+  --background-hover: transparent;
+  ion-label {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.button-icon {
+  --background: transparent !important;
+  --color: var(--cs-text-primary, #ffffff) !important;
+  --padding-top: 5px;
+  --padding-bottom: 5px;
+  --padding-start: 8px;
+  --padding-end: 8px;
+  font-size: var(--h5-font-size, 15px) !important;
+  font-weight: 300 !important;
+  --background-hover: transparent;
+  --color-hover: var(--cs-text-primary, #ffffff);
+  --color-activated: var(--cs-text-primary, #ffffff)!important;
+  --color-focused: var(--cs-text-primary, #ffffff)!important;
+  --box-shadow: none;
+
+  [slot=start] {
+    margin-inline-end: 8px !important;
+  }
+
+  [slot=end] {
+    margin-inline-start: 8px !important;
+  }
+}
+
+.clear-button {
+  --background: transparent !important;
+  --color: var(--cs-text-primary, #ffffff)!important;
+  --box-shadow: none;
+  font-size: var(--h5-font-size, 15px) !important;
+  font-weight: 600 !important;
+  --background-hover: transparent !important;
+  --color-hover: var(--cs-text-primary, #ffffff)!important;
+  --color-activated: var(--cs-text-primary, #ffffff)!important;
+  --color-focused: var(--cs-text-primary, #ffffff)!important;
+}
+
+.button-action-shit {
+  --border-radius: 50% !important;
+  min-height: 40px !important;
+  min-width: 40px;
+  --box-shadow: none !important;
+  --background: transparent !important;
+  --background-hover: transparent !important;
+
+  ion-icon {
+    font-size: var(--h1-font-size, 24px);
+    color: var(--cs-icon-color-primary, #ffffff);
+  }
+}
+
+  ion-button {
+    --ripple-color: transparent !important;
+    --color-focused: transparent !important;
+  }
+
+  ion-ripple-effect {
+    color: transparent;
+  }
+
+/* SETTINGS INPUT FIELD
+=======================================================
+=======================================================*/
+
+ion-input {
+  --placeholder-color: var(--cs-text-primary, #ffffff) !important;
+  --color: var(--cs-text-accent, #FF9900) !important;
+  --placeholder-opacity: 1 !important;
+}
+
+.input {
+  .icon-small {
+    color: red;
+  }
+}
+
+/* SETTINGS TEXTAREA
+=======================================================
+=======================================================*/
+
+ion-textarea {
+  --placeholder-color: var(--cs-text-primary, #ffffff) !important;
+  --color: var(--cs-text-accent, #FF9900) !important;
+  --placeholder-opacity: 1 !important;
+}
+
+/* SETTINGS CHECK BOX
+=======================================================
+=======================================================*/
+
+ion-checkbox {
+  --background: transparent;
+  --background-checked: var(--cs-background-accent, #FF9900);
+  --border-color-checked: var(--cs-background-accent, #FF9900);
+  --border-color: var(--cs-background-border, #CBCBCB);
+  --border-radius: 4px;
+  --checkmark-color: var(--cs-text-light, #23222B);
+}
+
+/* SETTINGS TOOGLE
+=======================================================
+=======================================================*/
+
+ion-toggle {
+  --background: var(--cs-background-primary, #23222B);
+  --background-checked: var(--cs-background-accent, #FF9900);
+  --handle-background: var(--cs-background-border, #CBCBCB);
+  --handle-background-checked: var(--cs-background-border, #CBCBCB);
+  padding-inline-start: 4px;
+  padding-inline-end: 4px;
+}
+
+/* SETTINGS RADIO
+=======================================================
+=======================================================*/
+
+ion-radio {
+  --color: var(--cs-background-border, #CBCBCB);
+  --color-checked: var(--cs-background-accent, #FF9900);
+}
+
+/* SETTINGS TABS
+=======================================================
+=======================================================*/
+
+ion-tab-bar {
+  --background: var(--cs-background-primary, #23222B);
+}
+
+ion-tab-button {
+  font-size: var(--h5-font-size, 15px);
+  --color: var(--cs-text-secondary, #CBCBCB);
+  --color-selected: var(--cs-text-accent, #FF9900);
+  --ripple-color: rgba(0, 0, 0, 0.1);
+}
+
+/* SETTINGS RANGE
+=======================================================
+=======================================================*/
+
+ion-range {
+  --knob-background: var(--cs-background-accent, #FF9900);
+  --bar-background-active: var(--cs-background-accent, #FF9900);
+  --bar-background: var(--cs-background-border, #CBCBCB);
+  --pin-background: var(--cs-background-accent, #FF9900);
+  --knob-box-shadow: 0 0px 8px var(--cs-background-accent, #FF9900);
+}
+
+/* SETTINGS ION-BADGE
+=======================================================
+=======================================================*/
+
+ion-badge {
+  --background: var(--cs-gradient-linear, #FF9900);
+  --color: var(--cs-text-light, #23222B);
+  --padding-bottom: 5px;
+  --padding-end: 10px;
+  --padding-start: 10px;
+  --padding-top: 5px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: var(--h5-font-size, 15px);
+}
+
+/* SETTINGS SEARCHBAR
+=======================================================
+=======================================================*/
+
+ion-searchbar {
+  --background: transparent !important;
+  --cancel-button-color: var(--cs-text-secondary, #CBCBCB) !important;
+  --clear-button-color: var(--cs-text-secondary, #CBCBCB) !important;
+  --color: var(--cs-text-accent, #FF9900) !important;
+  --icon-color: var(--cs-text-secondary, #CBCBCB) !important;
+  --placeholder-color: var(--cs-text-secondary, #CBCBCB) !important;
+  --placeholder-opacity: 1 !important;
+
+  .searchbar-input {
+    border-bottom: 2px solid var(--cs-background-border, #CBCBCB) !important;
+    box-shadow: none !important;
+  }
+}
+/* SETTINGS SEGMENTS
+=======================================================
+=======================================================*/
+ion-segment {
+  background: var(--cs-background-secondary);
+}
+
+ion-segment-button {
+  --background: var(--cs-background-secondary);
+  --background-checked: transparent !important;
+  --background-focused: transparent !important;
+  --background-hover: transparent !important;
+  --ripple-color: transparent !important;
+  --color: var(--cs-text-primary);
+  --color-checked: var(--cs-text-accent) !important;
+  --color-focused: var(--cs-text-primary) !important;
+  --color-hover: var(--cs-text-primary) !important;
+  --indicator-box-shadow: none;
+  --border-width: 0 !important;
+  --border-radius: 0;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 5px;
+  min-width: unset;
+  max-width: unset;
+}
+
+//Setting for ios
+.ios {
+  ion-segment {
+    padding: 10px 0 0 0;
+    ion-segment-button {
+      --indicator-color: var(--cs-background-secondary);
+    }
+    .segment-button-checked {
+      border-bottom: 2px solid var(--cs-background-accent);
+    }
+  }
+}
+
+/* SETTINGS SUPER TAB
+=======================================================
+=======================================================*/
+super-tabs-toolbar {
+  &:after {
+    background-image: none !important;
+  }
+}
+
+super-tabs-container, super-tab {
+  width: 100%;
+}
+
+super-tab-button {
+  flex-grow: 1;
+  max-width: unset;
+}
+
+
+/* SETTINGS NEW-CATEGORY
+=======================================================
+=======================================================*/
+
+.new-category {
+  background: var(--cs-gradient-linear, #FF9900);
+  color: var(--cs-text-light, #23222B);
+  font-size: var(--h5-font-size, 15px);
+  font-weight: bold;
+  line-height: 17px;
+  padding: 10px 20px;
+}
+
+/* SETTINGS WIZARD
+=======================================================
+=======================================================*/
+
+.swiper-pagination-bullet-active {
+  --bullet-background: var(--cs-background-accent, #FF9900) !important;
+  background: var(--bullet-background) !important;
+}
+
+cs-wizard-layout-1 {
+  .swiper-pagination.swiper-pagination-bullets {
+    bottom: 50px !important;
+  }
+}
+
+cs-wizard-layout-2 {
+  .swiper-pagination.swiper-pagination-bullets {
+    bottom: 0 !important;
+  }
+}
+
+cs-wizard-layout-3 {
+  .swiper-pagination.swiper-pagination-bullets {
+    bottom: 80px !important;
+  }
+}
+
+cs-wizard-layout-4 {
+  .swiper-pagination.swiper-pagination-bullets {
+    bottom: 10px !important;
+  }
+}
+
+cs-profile-layout-2 {
+  .swiper-pagination.swiper-pagination-bullets {
+    bottom: -35px !important;
+  }
+}
+
+cs-profile-layout-4 {
+  .swiper-pagination.swiper-pagination-bullets {
+    bottom: -25px !important;
+  }
+}
+
+/* Default Overview Ionic Section
+=======================================================
+=======================================================*/
+
+.background-size {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+[slot=end] {
+  margin-inline-start: 0;
+}
+
+[slot=start] {
+  margin-inline-end: 16px;
+}
+
+.ios {
+  [slot=start] {
+    margin-inline-end: 16px;
+  }
+}
+
+.border-radius {
+  border-radius: 8px;
+}
+
+.no-border-radius {
+  border-radius: 0;
+  --border-radius: 0;
+}
+
+.no-box-shadow {
+  box-shadow: none !important;
+}
+
+.background-primary {
+  background: var(--cs-background-primary, #23222B);
+}
+
+.transparent {
+  --background: transparent;
+}
+
+.box-shadow {
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2) !important;
+  position: relative;
+  z-index: 999;
+}
+
+.clearfix {
+  display: block;
+  clear: both;
+}
+
+/* Settings Spinner
+================================================
+================================================*/
+
+ion-spinner {
+  width: 40px;
+  height: 40px;
+  color: var(--cs-background-accent, #FF9900) !important;
+}
+
+cs-spinner {
+  &.svg-size {
+    font-size: 45px;
+    color: var(--cs-background-accent, #FF9900) !important;
+    stroke: var(--cs-background-accent, #FF9900) !important;
+    fill: var(--cs-background-accent, #FF9900) !important;
+  }
+}
+
+/* Settings Reorder Group
+================================================
+================================================*/
+
+ion-reorder-group {
+  ion-item {
+    --inner-padding-end: 0 !important;
+  }
+
+  ion-reorder {
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    background: var(--cs-gradient-linear, #FF9900) !important;
+    color: var(--cs-text-light, #23222B) !important;
+    opacity: 1 !important;
+    margin: 0;
+  }
+}
+
+ion-item-options {
+  border-bottom-color: transparent !important;
+}
+
+/* Settings Picker
+================================================
+================================================*/
+
+ion-picker {
+  --background: var(--cs-background-primary, #23222B) !important;
+  .picker-button {
+    color: var(--cs-text-accent, #FF9900) !important;
+  }
+
+  .picker-opt {
+    color: var(--cs-text-secondary, #CBCBCB) !important;
+  }
+
+  .picker-opt-selected {
+    color: var(--cs-text-accent, #FF9900) !important;
+  }
+}
+
+/* Settings Datatime
+================================================
+================================================*/
+
+ion-datetime {
+  --placeholder-color: var(--cs-text-primary, #ffffff);
+}
+
+/* Settings Select
+================================================
+================================================*/
+
+ion-select {
+  color: var(--cs-text-accent, #FF9900) !important;
+}
+
+/* Settings Alert
+================================================
+================================================*/
+
+ion-alert {
+  .alert-wrapper {
+    background: var(--cs-background-primary, #23222B) !important;
+    .alert-head {
+      .alert-title {
+        font-size: var(--h5-font-size, 15px) !important;
+        font-weight: 300 !important;
+        color: var(--cs-text-primary, #ffffff) !important;
+      }
+
+      .alert-sub-title {
+        font-size: var(--h5-font-size, 15px) !important;
+        font-weight: 300 !important;
+        color: var(--cs-text-accent, #FF9900) !important;
+      }
+    }
+
+    .alert-message {
+      color: var(--cs-text-primary, #ffffff) !important;
+      font-size: var(--h5-font-size, 15px);
+    }
+
+    .alert-radio-group {
+      border-top: 1px solid var(--cs-background-border, #CBCBCB);
+      border-bottom: 1px solid var(--cs-background-border, #CBCBCB);
+
+      .alert-radio-label {
+        font-size: var(--h5-font-size, 15px) !important;
+        font-weight: 300 !important;
+        color: var(--cs-text-primary, #ffffff) !important;
+      }
+
+      .alert-radio-inner {
+        border-color: var(--cs-background-accent, #FF9900) !important;
+      }
+
+      .alert-radio-icon {
+        border-color: var(--cs-background-border, #CBCBCB) !important;
+      }
+
+      .alert-radio-inner.sc-ion-alert-md {
+        background-color: var(--cs-background-accent, #FF9900) !important;
+      }
+
+      [aria-checked=true] .alert-radio-icon {
+        border-color: var(--cs-background-accent, #FF9900) !important;
+      }
+
+      [aria-checked=true] .alert-radio-label {
+        color: var(--cs-text-accent, #FF9900) !important;
+      }
+    }
+
+    .alert-checkbox-group {
+      border-top: 1px solid var(--cs-background-border, #CBCBCB);
+      border-bottom: 1px solid var(--cs-background-border, #CBCBCB);
+
+      .alert-checkbox-label {
+        font-size: var(--h5-font-size, 15px) !important;
+        font-weight: 300 !important;
+        color: var(--cs-text-primary, #ffffff) !important;
+      }
+
+      .alert-checkbox-icon {
+        border-color: var(--cs-background-border, #CBCBCB) !important;
+      }
+
+      [aria-checked=true] .alert-checkbox-label {
+        color: var(--cs-text-accent, #FF9900) !important;
+      }
+
+      [aria-checked=true] .alert-checkbox-icon {
+        background: var(--cs-background-accent, #FF9900) !important;
+        border-color: var(--cs-background-accent, #FF9900) !important;
+      }
+    }
+
+    .alert-button-group {
+      background: var(--cs-gradient-linear, #FF9900) !important;
+      .alert-button {
+        font-size: var(--h5-font-size, 15px) !important;
+        font-weight: 400 !important;
+        color: var(--cs-text-light, #23222B) !important;
+      }
+    }
+  }
+}
+
+/* Settings Popover
+================================================
+================================================*/
+
+ion-select-popover {
+  background: var(--cs-background-primary, #23222B) !important;
+
+  ion-list {
+    padding: 0 !important;
+
+    ion-item {
+      --background: transparent;
+      --border-color: var(--cs-background-border, #CBCBCB);
+
+      ion-label {
+        font-size: var(--h5-font-size, 15px) !important;
+        font-weight: 300 !important;
+        color: var(--cs-text-secondary, #CBCBCB) !important;
+      }
+    }
+  }
+}
+
+/* Settings Action Sheet
+================================================
+================================================*/
+
+ion-action-sheet {
+  --background: var(--cs-background-primary, #23222B) !important;
+
+  .action-sheet-button {
+    color: var(--cs-text-secondary, #CBCBCB) !important;
+    font-size: var(--h5-font-size, 15px) !important;
+    font-weight: 400 !important;
+    border-bottom: 1px solid var(--cs-background-border, #CBCBCB) !important;
+    text-align: right !important;
+  }
+
+  .action-sheet-button-inner {
+    justify-content: flex-end !important;
+  }
+
+  .action-sheet-cancel {
+    background: var(--cs-gradient-linear, #FF9900) !important;
+    color: var(--cs-text-light, #23222B) !important;
+  }
+
+  .action-sheet-selected {
+    color: var(--cs-text-primary, #ffffff) !important;
+    font-weight: bold !important;
+    background: var(--cs-background-secondary, #32313B) !important;
+  }
+}
+
+.action-sheet-cancel.sc-ion-action-sheet-ios::after {
+    background: var(--cs-gradient-linear, #FF9900) !important;
+
+}
+
+.action-sheet-selected.sc-ion-action-sheet-ios::after {
+    background: var(--cs-background-secondary, #32313B) !important;
+}
+
+/* Settings Alert Info
+================================================
+================================================*/
+
+.info-dialog {
+  text-align: center;
+
+  .alert-head {
+    text-align: center;
+  }
+}
+
+/* Settings Alert Warning
+================================================
+================================================*/
+
+.alert-warning {
+  text-align: center;
+
+  .alert-head {
+    text-align: center;
+  }
+
+  .alert-button-group {
+    padding: 8px 0 8px 8px !important;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: var(--h5-font-size, 15px);
+    border: none !important;
+
+    .alert-button-inner {
+      text-align: center;
+      color: var(--cs-text-light, #23222B) !important;
+    }
+  }
+}
+
+/* Settings Alert Subscribe
+================================================
+================================================*/
+
+.alert-subscribe, .basic-dialog {
+  .alert-input {
+    background: transparent;
+    color: var(--cs-text-accent, #FF9900);
+    border-bottom: 1px solid var(--cs-background-border) !important;
+  }
+  .alert-input:focus {
+    border-color: var(--cs-background-accent, #FF9900) !important;
+  }
+  .alert-input.sc-ion-alert-ios {
+    border: none;
+    border-radius: 0;
+  }
+}

@@ -1,0 +1,14 @@
+/* Style component 3
+========================================================*/
+
+ion-grid {
+  height: 100%;
+
+  ion-row {
+    height: 100%;
+  }
+}
+
+ion-item {
+  --background: var(--cs-background-secondary, #32313B);
+}

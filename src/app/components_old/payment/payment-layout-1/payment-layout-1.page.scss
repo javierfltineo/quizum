@@ -1,0 +1,18 @@
+/* Style component 1
+========================================================*/
+ion-datetime {
+  --padding-start: 0;
+}
+
+ion-grid,
+ion-row {
+  height: 100%;
+}
+
+ion-item {
+  --background: var(--cs-background-secondary, #32313B);
+
+  .ion-dirty {
+    color: var(--cs-text-accent, #FF9900) !important;
+  }
+}

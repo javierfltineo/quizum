@@ -1,0 +1,46 @@
+<!-- ANIMATION --COMPONENT 6 -->
+<ion-grid *ngIf="data && data.items">
+  <ion-row appAnimateItems className="fadeIn">
+    <ion-col size="12" size-md="6" *ngFor="let item of data.items" class="animation-normal opacity-0">
+      <ion-card class="background-size box-shadow ion-no-margin transparent border-radius"
+       (click)="onEvent('onItemClick', item)">
+        <ion-card-header>
+          <ion-item lines="none" class="ion-no-padding">
+            <h2 class="text-size-sm text-color-primary font-bold ion-text-wrap
+            ion-text-capitalize">{{item.subtitle}}</h2>
+            <ion-button slot="end" class="default-button
+            box-shadow ion-text-capitalize">
+              {{item.button}}</ion-button>
+          </ion-item>
+        </ion-card-header>
+        <ion-img [src]="item.image"></ion-img>
+        <ion-card-content>
+          <!-- Card Title -->
+          <h2 class="text-size-xl
+          text-color-primary font-bold">{{item.title}}</h2>
+          <!-- Card Badge - Price -->
+          <span class="text-size-md
+          text-color-secondary font-semi-bold">{{item.price}}</span>
+          <ion-row class="ion-no-padding">
+            <ion-col size="auto" class="ion-no-padding">
+              <!-- Button Like -->
+              <ion-button class="button-icon ion-text-capitalize">
+                <ion-icon slot="start" class="icon-medium"
+                [name]="item.iconLike"></ion-icon>
+                {{item.buttonLike}}
+              </ion-button>
+            </ion-col>
+            <ion-col size="auto" class="ion-no-padding">
+              <!-- Button Comment -->
+              <ion-button class="button-icon ion-text-capitalize">
+                <ion-icon slot="start" class="icon-medium"
+                [name]="item.iconComment"></ion-icon>
+                {{item.buttonComment}}
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

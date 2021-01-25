@@ -1,0 +1,27 @@
+<!--Themes Time Line - COMPONENT 3  -->
+<ion-grid class="ion-no-padding" *ngIf="data != null">
+  <ion-row>
+    <ion-col class="ion-no-padding" size="11" offset="1">
+      <!-- Cards -->
+      <ion-card class="ion-no-padding transparent" *ngFor="let item of data.items"
+      (click)="onItemClickFunc(item, $event)">
+        <span class="text-size-sm text-color-accent font-regular ion-text-wrap">
+          {{item.time}}</span>
+        <ion-item class="default-item box-shadow" lines="none">
+          <ion-avatar class="ion-align-self-start">
+            <img [src]="item.avatar">
+          </ion-avatar>
+          <ion-label class="ion-padding-start">
+            <h2 class="text-size-md text-color-primary font-bold ion-text-wrap">
+              {{item.title}}</h2>
+            <h3 class="text-size-sm text-color-secondary font-regular ion-text-wrap">
+              {{item.subtitle}}</h3>
+            <div class="clearfix"></div>
+            <p class="text-size-p text-color-secondary font-regular ion-text-wrap ion-padding-top">
+              {{item.description}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

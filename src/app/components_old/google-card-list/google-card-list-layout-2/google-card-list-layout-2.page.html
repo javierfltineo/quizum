@@ -1,0 +1,38 @@
+<!-- GOOGLE CARD --COMPONENT 2 -->
+<ion-grid *ngIf="data != null">
+  <ion-row>
+    <ion-col size="12" size-md="6" *ngFor="let item of data.items">
+      <ion-card class="ion-text-start box-shadow border-radius ion-no-margin background-size"
+      (click)="onItemClickFunc(item, $event)"
+      [ngStyle]="{'background-image': 'url(' + item.image + ')'}">
+        <!--Card content-->
+        <ion-card-content class="transparent">
+          <ion-item class="ion-no-padding transparent" lines="none">
+            <ion-icon class="icon-round" slot="start" [name]="item.icon"></ion-icon>
+            <!--Card title-->
+            <ion-label>
+              <h2 class="text-size-xl text-color-primary font-semi-bold
+              ion-text-wrap ion-no-margin">{{item.title}}</h2>
+            </ion-label>
+            <!-- Share Button --->
+            <ion-button class="button-action-shit" slot="end">
+              <ion-icon [name]="item.shareIcon"></ion-icon>
+            </ion-button>
+          </ion-item>
+          <!--Card subtitle-->
+          <h3 class="text-size-sm text-color-primary font-regular ion-text-wrap">
+            {{item.description}}</h3>
+          <!--Card description-->
+          <span class="ion-padding-top text-size-sm text-color-primary font-regular">
+            {{item.priceText}}</span>
+          <div class="clearfix"></div>
+          <span class="text-size-md text-color-primary font-bold">
+            {{item.price}}</span>
+          <ion-button class="ion-margin-top default-button box-shadow" expand="block">
+            {{item.button}}
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

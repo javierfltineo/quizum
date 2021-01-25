@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>RTL + Color change</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item class="transparent" lines="none">
+          <ion-lable class="text-size-xs text-color-primary ion-font-bold ion-padding-end">Testing our application with Rtl (enable)</ion-lable>
+          <ion-checkbox slot="end" [(ngModel)]="rtlChecked" (ionChange)="ionChange($event)"></ion-checkbox>
+        </ion-item>
+        <ion-item class="transparent" lines="none">
+          <h1 class="text-size-lg text-color-primary font-bold">After changing rtl, please restart app.</h1>
+        </ion-item>
+        <!--- Button color combination -->
+        <ion-col size="12">
+          <ion-button class="ion-margin-top default-button orange-peal-turbo-gradient" expand="block" (click)="changeTheme('orange-peal-turbo-gradient')">
+            Orange Peal Turbo-Gradient
+          </ion-button>
+          <ion-button class="ion-margin-top default-button international-orange-gradient" expand="block" (click)="changeTheme('international-orange-gradient')">
+            International Orange-Gradient
+          </ion-button>
+          <ion-button class="ion-margin-top default-button orange-peel" expand="block" (click)="changeTheme('orange-peel')">
+            Orange Peel
+          </ion-button>
+          <ion-button class="ion-margin-top default-button turbo" expand="block" (click)="changeTheme('turbo')">
+            Turbo
+          </ion-button>
+          <ion-button class="ion-margin-top default-button lime" expand="block" (click)="changeTheme('lime')">
+            Lime
+          </ion-button>
+          <ion-button class="ion-margin-top default-button bright-turquoise" expand="block" (click)="changeTheme('bright-turquoise')">
+            Bright Turquoise
+          </ion-button>
+          <ion-button class="ion-margin-top default-button dodger-blue" expand="block" (click)="changeTheme('dodger-blue')">
+            Dodger Blue
+          </ion-button>
+          <ion-button class="ion-margin-top default-button heliotrope" expand="block" (click)="changeTheme('heliotrope')">
+            Heliotrope
+          </ion-button>
+          <ion-button class="ion-margin-top default-button persimmon" expand="block" (click)="changeTheme('persimmon')">
+            Persimmon
+          </ion-button>
+          <ion-button class="ion-margin-top default-button turbo-lime-gradient" expand="block" (click)="changeTheme('turbo-lime-gradient')">
+            Turbo Lime-Gradient
+          </ion-button>
+        </ion-col>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

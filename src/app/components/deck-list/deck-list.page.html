@@ -1,0 +1,53 @@
+<!-- SWIPE TO DISMISS --COMPONENT 2 -->
+<ion-grid class="ion-no-padding" *ngIf="data != null">
+  <ion-row>
+    <ion-col size="12" class="ion-no-padding">
+      <ion-list class="ion-no-margin" appAnimateItems className="fadeInLeft"  #dynamicList>
+        <!--Header-->
+        <ion-list-header class="ion-padding">
+          <ion-label lines="none">
+            <h1 class="text-size-md font-bold text-color-secondary ion-text-wrap">{{data.title}}</h1>
+            <p>{{data.subtitle}}</p>
+          </ion-label>
+        </ion-list-header>
+        <ion-item-sliding *ngFor="let item of data.items" #slidingItem>
+          <ion-item class="default-item box-shadow" lines="none"
+          (click)="onItemClickFunc(item, $event)">
+            <!-- Images -->
+            <ion-thumbnail>
+              <ion-img [src]="item.image"></ion-img>
+            </ion-thumbnail>
+            <ion-label class="ion-padding-start">
+              <h2 class="text-size-md font-bold text-color-primary ion-text-wrap">
+                {{item.title}}</h2>
+              <p class="text-size-sm text-color-secondary font-light ion-text-wrap">
+                {{item.subtitle}}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item-options side="end" slot="end">
+            <ion-item-option>
+              <ion-button (click)="editDeck(item)" class="button-top-icon ion-text-capitalize" fill="clear" slot="end">
+                <ion-label>
+                  <ion-icon class="icon-medium text-color-accent"
+                  [name]="'person-add'"></ion-icon>
+                  <h2 class="text-size-sm text-color-accent font-bold">
+                    Editar</h2>
+                </ion-label>
+              </ion-button>
+            </ion-item-option>
+            <ion-item-option (click)="onDeleteFunc(item, $event)">
+              <!-- Button Delate -->
+              <ion-button class="button-top-icon ion-text-capitalize"
+              fill="clear" (click)="delete(item)">
+                <ion-label>
+                  <ion-icon class="icon-large" [name]="item.iconDelete"></ion-icon>
+                  <h2 class="text-size-md text-color-primary">{{item.msgDelete}}</h2>
+                </ion-label>
+              </ion-button>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>

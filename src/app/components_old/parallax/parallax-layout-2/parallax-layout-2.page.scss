@@ -1,0 +1,44 @@
+/* Style component 2
+========================================================*/
+ion-toolbar {
+  color: var(--cs-text-primary, #fff);
+}
+
+.ios {
+  ion-back-button,
+  ion-menu-button {
+    --color: var(--cs-text-primary, #fff);
+  }
+}
+
+.active {
+  ion-toolbar {
+    background: var(--cs-background-primary, #23222B);
+    color: var(--cs-text-accent, #FF9900);
+  }
+
+  .ios {
+    ion-back-button,
+    ion-menu-button {
+      --color: var(--cs-text-accent, #FF9900);
+    }
+  }
+}
+
+.background-size {
+  height: 200px;
+  position: relative;
+}
+
+.info-block {
+  ion-item {
+    --inner-padding-end: 0;
+  }
+
+  ion-thumbnail {
+    opacity: 1 !important;
+    margin: -55px auto 0;
+    z-index: 999;
+    position: relative;
+  }
+}

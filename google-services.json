@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "378544650226",
+    "firebase_url": "https://ionic4-zekky-theme.firebaseio.com",
+    "project_id": "ionic4-zekky-theme",
+    "storage_bucket": "ionic4-zekky-theme.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378544650226:android:2eb137c8ba17cf45",
+        "android_client_info": {
+          "package_name": "com.csform.ionic4zekky"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "378544650226-s5lpq2a2bi2hiufu03tm64me4u9nht45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcU_UvsALnaeVEGucsN6LNNTAPeO1Z_fs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "378544650226-s5lpq2a2bi2hiufu03tm64me4u9nht45.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

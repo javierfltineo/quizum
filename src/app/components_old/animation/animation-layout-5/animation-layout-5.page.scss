@@ -1,0 +1,22 @@
+/* Style component 5
+========================================================*/
+ion-card {
+  height: 400px;
+  box-shadow: none;
+  position: relative;
+
+  &::after {
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(1%, var(--cs-gradient-secondary)), to(black));
+    background: linear-gradient(to top, var(--cs-gradient-secondary) 1%, black 100%);
+  }
+  ion-item {
+    --inner-padding-end: 0;
+  }
+}

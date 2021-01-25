@@ -1,0 +1,34 @@
+/* Style component 1
+========================================================*/
+ion-card {
+  overflow: visible;
+  position: relative;
+
+  &:after {
+    content: "";
+    width: 1px;
+    top: 10px;
+    left: -30px;
+    bottom: -24px;
+    position: absolute;
+    background-color:var(--cs-background-border, #CBCBCB);
+  }
+
+  &:before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--cs-background-accent, #FF9900);
+    top: 0;
+    left: -36px;
+    position: absolute;
+    z-index: 999;
+  }
+}
+
+ion-col > ion-card:last-child {
+  &:after {
+    display: none;
+  }
+}

@@ -1,0 +1,37 @@
+/*  Style component 1
+========================================================*/
+
+.header-image {
+  background: var(--cs-background-primary, #23222B);
+  position: relative;
+  z-index: 999;
+}
+// Settings Big Image
+
+.background-size {
+  height: 300px;
+  position: relative;
+
+  &::after {
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, var(--cs-gradient-secondary)), to(black));
+    background: linear-gradient(to bottom, var(--cs-gradient-secondary) 1%, black 100%);
+  }
+
+  .info-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+
+    ion-label {
+      flex: unset;
+    }
+  }
+}

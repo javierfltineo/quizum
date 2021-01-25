@@ -1,0 +1,223 @@
+<!-- Theme Segment - COMPONENT 2 -->
+<ion-page class="ion-page" *ngIf="viewEntered">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title *ngIf="data != null" class="ion-text-capitalize">{{data.toolbarTitle}}</ion-title>
+    </ion-toolbar>
+    <!--Segment Section -->
+    <ion-toolbar class="ion-no-padding">
+        <ion-segment scrollable [(ngModel)]="selectedItem"  *ngIf="data != null">
+          <ion-segment-button class="ion-text-capitalize" value="Page1">
+            <ion-label>
+              {{data.segmentButton1}}
+            </ion-label>
+          </ion-segment-button>
+          <ion-segment-button class="ion-text-capitalize" value="Page2">
+            <ion-label>
+              {{data.segmentButton2}}
+            </ion-label>
+          </ion-segment-button>
+          <ion-segment-button class="ion-text-capitalize" value="Page3">
+            <ion-label>
+              {{data.segmentButton3}}
+            </ion-label>
+          </ion-segment-button>
+          <ion-segment-button class="ion-text-capitalize" value="page4">
+            <ion-label>
+              {{data.segmentButton4}}
+            </ion-label>
+          </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+  </ion-header>
+  <!-- Content-->
+  <ion-content>
+    <ion-grid class="ion-no-padding " *ngIf="data != null">
+
+      <!--- SETTINGS PAGE1 SCREEN -->
+      <ion-row class="page1" *ngIf="isEnabled('Page1') && data.page1 != null">
+        <ion-col size="12" class="ion-align-self-start">
+          <ion-card class="ion-no-padding box-shadow border-radius transparent">
+            <ion-item class="transparent" lines="none">
+              <ion-avatar>
+                <img [src]="data.page1.image" alt="">
+              </ion-avatar>
+            </ion-item>
+            <ion-item class="transparent ion-text-center" lines="none">
+              <ion-label>
+                <h1 class="text-size-md text-color-primary font-bold">
+                  {{data.page1.title}}</h1>
+                <p class="text-size-sm text-color-secondary font-regular">
+                  {{data.page1.subtitle}}</p>
+              </ion-label>
+            </ion-item>
+            <div class="clearfix"></div>
+            <div class="social-share">
+              <!-- Followers-->
+              <ion-item class="transparent" lines="none">
+                <ion-label class="ion-text-center">
+                  <span class="text-size-xs text-color-secondary font-regular">
+                    {{data.page1.valueFollowers}}</span>
+                  <div class="clearfix"></div>
+                  <h2 class="text-size-xs text-color-secondary font-regular">
+                    {{data.page1.followers}}</h2>
+                </ion-label>
+              </ion-item>
+              <!-- Following -->
+              <ion-item class="transparent" lines="none">
+                <ion-label class="ion-text-center">
+                  <span class="text-size-xs text-color-secondary font-regular"
+                  >{{data.page1.valueFollowing}}</span>
+                  <div class="clearfix"></div>
+                  <h2 class="text-size-xs text-color-secondary font-regular">
+                    {{data.page1.following}}</h2>
+                </ion-label>
+              </ion-item>
+              <!-- Post -->
+              <ion-item class="transparent" lines="none">
+                <ion-label class="ion-text-center">
+                  <span class="text-size-xs text-color-secondary font-regular">
+                    {{data.page1.valuePosts}}</span>
+                  <div class="clearfix"></div>
+                  <h2 class="text-size-xs text-color-secondary font-regular">
+                    {{data.page1.posts}}</h2>
+                </ion-label>
+              </ion-item>
+            </div>
+          </ion-card>
+        </ion-col>
+        <!-- Slider-->
+        <ion-col size="12" class="ion-align-self-start">
+          <h2 class="ion-text-uppercase text-size-xs text-color-accent ion-no-margin
+          font-bold ion-text-center">{{data.page1.category}}</h2>
+          <ion-slides pager="true">
+            <ion-slide *ngFor="let item of data.page1.items;let i = index"
+            (click)="onItemClickFunc(item, $event)">
+              <ion-card class="ion-padding box-shadow border-radius transparent">
+                <span class="text-size-xs text-color-secondary font-bold ion-text-capitalize">
+                  {{item.category}}</span>
+                <h2 class="text-size-md ion-text-wrap text-color-primary font-regular">
+                  {{item.title}}</h2>
+                <div class="social-share">
+                  <ion-button class="button-icon ion-text-capitalize"
+                  (click)="onLikeFunc(item, $event)">
+                    <ion-icon slot="start"
+                    [ngClass]="{'active' : item.like.isActive}"
+                    [name]="item.like.icon"></ion-icon>
+                    {{item.like.number}} {{item.like.text}}
+                  </ion-button>
+                  <ion-button class="button-icon ion-text-capitalize"
+                  (click)="onCommentFunc(item, $event)">
+                    <ion-icon slot="start"
+                    [ngClass]="{'active' : item.comment.isActive}"
+                    [name]="item.comment.icon"></ion-icon>
+                    {{item.comment.number}} {{item.comment.text}}
+                  </ion-button>
+                </div>
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+
+
+      <!--- SETTINGS PAGE2 SCREEN -->
+      <ion-row class="page2" *ngIf="isEnabled('Page2') && data.page2 != null">
+        <ion-col size="12" size-md="6" *ngFor="let item of data.page2.items">
+          <ion-card class="ion-padding box-shadow border-radius transparent">
+            <img [src]="item.image" />
+            <ion-card-content class="ion-no-padding"
+            (click)="onItemClickFunc(item, $event)">
+              <h3 class="text-color-primary text-size-sm font-regular ion-padding-top">
+                {{item.category}}</h3>
+              <h1 class="text-size-xl text-color-primary font-bold
+              ion-padding-top ion-padding-bottom">{{item.title}}</h1>
+              <p class="text-size-sm text-color-secondary">
+                {{item.description}}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+
+      <!--- SETTINGS PAGE3 SCREEN -->
+      <ion-row class="page3" *ngIf="isEnabled('Page3') && data.page3 != null">
+        <ion-col size="12" size-md="6" *ngFor="let item of data.page3.items">
+          <ion-card class="ion-no-padding box-shadow border-radius transparent">
+            <img [src]="item.image" />
+            <ion-card-content (click)="onItemClickFunc(item, $event)">
+              <h3 class="text-color-primary text-size-sm font-regular">
+                {{item.category}}</h3>
+              <h1 class="text-size-xl text-color-primary font-bold
+              ion-padding-top ion-padding-bottom">{{item.title}}</h1>
+              <p class="text-size-sm text-color-secondary">
+                {{item.description}}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+
+      <!--- SETTINGS PAGE44 SCREEN -->
+      <ion-row class="page4" *ngIf="isEnabled('page4') && data.page4 != null">
+        <ion-col class="ion-padding-start ion-padding-end" size="12">
+          <!---About Name-->
+          <h1 class="text-size-md text-wrap text-color-secondary">
+            {{data.page4.title}}</h1>
+          <h2 class="text-size-xl font-bold text-color-primary">
+            {{data.page4.titleDescription}}</h2>
+          <h2  class="ion-padding-toptext-size-md font-medium no-margin
+          text-color-primary ion-text-wrap">{{data.page4.contentTitle}}</h2>
+          <p class="ion-text-wrap text-color-secondary text-size-sm">
+            {{data.page4.contentDescription}}</p>
+          <!---About Info-->
+          <ion-list lines="none">
+            <ion-item class="transparent ion-no-padding">
+              <i slot="start" class="icon {{data.page4.iconLoacation}} icon-medium"></i>
+              <p class="ion-no-margin font-bold text-size-xs text-color-secondary">
+                {{data.page4.iconLoacationText}}</p>
+            </ion-item>
+            <ion-item class="transparent ion-no-padding">
+              <i slot="start" class="icon {{data.page4.iconWatch}} icon-medium"></i>
+              <p class="ion-no-margin font-bold text-size-xs text-color-secondary">
+                {{data.page4.iconWatchText}}</p>
+            </ion-item>
+            <ion-item class="transparent ion-no-padding">
+              <i slot="start" class="icon {{data.page4.iconPhone}} icon-medium"></i>
+              <p class="ion-no-margin font-bold text-size-xs text-color-secondary">
+                {{data.page4.iconPhoneText}}</p>
+            </ion-item>
+            <ion-item class="transparent ion-no-padding">
+              <i slot="start" class="icon {{data.page4.iconEarth}} icon-medium"></i>
+              <p class="ion-no-margin font-bold text-size-xs text-color-secondary">
+                {{data.page4.iconEarthText}}</p>
+            </ion-item>
+            <ion-item class="transparent ion-no-padding">
+              <i slot="start" class="icon {{data.page4.iconEmail}} icon-medium"></i>
+              <p class="ion-no-margin font-bold text-size-xs text-color-secondary">
+                {{data.page4.iconEmailText}}</p>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col class="ion-no-padding" size="12">
+          <!---MAP TEXT-->
+          <h2 class="ion-margin-start text-size-xs text-color-primary">
+            {{data.page4.titleMap}}</h2>
+          <agm-map [latitude]="data.page4.map.lat"
+          [longitude]="data.page4.map.lng"
+          [zoom]="data.page4.map.zoom"
+          [mapTypeControl]="data.page4.map.mapTypeControl"
+          [streetViewControl]="data.page4.map.streetViewControl"
+          [styles]="data.page4.map.styles">
+            <agm-marker [latitude]="data.page4.map.lat"
+            [longitude]="data.page4.map.lng"></agm-marker>
+          </agm-map>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </ion-content>
+</ion-page>

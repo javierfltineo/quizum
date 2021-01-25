@@ -1,0 +1,56 @@
+<!--Theme Parallax -- COMPONENT 1 -->
+
+<ion-header [ngClass]="{'active': isHeaderVisible }">
+  <ion-toolbar class="transparent">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-capitalize">{{data.toolbarTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!--- Theme Parallax Frends -->
+<ion-page class="ion-page">
+  <ion-content scrollEvents="true" parallax-header
+  *ngIf="data != null" (ionScroll)="scrolling($event)">
+    <div class="header-image background-size"
+    [ngStyle]="{'background-image': 'url(' + data.headerImage + ')'}">
+      <div class="parallax-title-section text-center">
+        <!--Title parallax-->
+        <h2 class="text-size-xl text-color-primary font-bold" *ngIf="data != null">
+          {{data.title}}</h2>
+      </div>
+    </div>
+    <!--Content-->
+    <ion-grid class="ion-no-padding" *ngIf="data != null">
+      <ion-row>
+        <ion-col class="ion-no-padding" size="12">
+          <ion-list class="ion-no-margin">
+            <ion-item class="default-item box-shadow" lines="none" *ngFor="let item of data.items"
+            (click)="onItemClickFunc(item, $event)">
+              <!--Content Avatar-->
+              <ion-thumbnail>
+                <img [src]="item.image">
+              </ion-thumbnail>
+              <!-- Ttile and Subtitle -->
+              <ion-label class="ion-padding-start">
+                <h2 class="text-size-md text-color-primary font-bold ion-text-wrap">
+                  {{item.title}}</h2>
+                <h3 class="text-size-sm text-color-secondary font-regular ion-text-wrap">
+                  {{item.subtitle}}</h3>
+              </ion-label>
+              <ion-button class="button-top-icon ion-text-capitalize" fill="clear" slot="end">
+                <ion-label>
+                  <ion-icon class="icon-medium text-color-accent" [name]="item.iconButton">
+                  </ion-icon>
+                  <h2 class="text-size-sm text-color-accent font-bold">
+                    {{item.button}}</h2>
+                </ion-label>
+              </ion-button>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-page>

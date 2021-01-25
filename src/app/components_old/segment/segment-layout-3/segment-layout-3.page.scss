@@ -1,0 +1,46 @@
+/* Style component 3
+========================================================*/
+
+ion-segment {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+
+  ion-segment-button {
+    width: auto !important;
+    overflow: visible;
+    padding: 0 10px !important;
+    align-items: center;
+    display: grid;
+  }
+}
+
+.page1 {
+
+  .social-share {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+  }
+}
+
+.page2 {
+  ion-card {
+    position: relative;
+    height: 250px;
+
+    &::after {
+      content: "";
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      position: absolute;
+      z-index: -1;
+      background: -webkit-gradient(linear, left bottom, left top, color-stop(1%, var(--cs-gradient-secondary)), to(black));
+      background: linear-gradient(to top, var(--cs-gradient-secondary) 1%, black 100%);
+    }
+  }
+}

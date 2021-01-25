@@ -1,0 +1,31 @@
+/* Style component 10
+========================================================*/
+.background-size {
+  height: 215px;
+  position: relative;
+  border-radius: var(--border-radius, 8px);
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, var(--cs-gradient-secondary)), to(black));
+    background: linear-gradient(to bottom, var(--cs-gradient-secondary) 1%, black 100%);
+  }
+
+  ion-item {
+    position: absolute;
+    z-index: 999;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .icon {
+      margin: 0 !important;
+    }
+  }
+}

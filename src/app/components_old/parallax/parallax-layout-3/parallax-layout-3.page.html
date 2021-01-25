@@ -1,0 +1,51 @@
+<!--Theme Parallax -- COMPONENT 3 -->
+
+<ion-header [ngClass]="{'active': isHeaderVisible }">
+  <ion-toolbar class="transparent">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-capitalize">{{data.toolbarTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!--- Theme Parallax Basic -->
+<ion-page class="ion-page">
+  <!--- Header Big Image-->
+  <ion-content scrollEvents="true" parallax-header
+  *ngIf="data != null" (ionScroll)="scrolling($event)">
+    <div class="header-image">
+      <div class="background-size"
+      [ngStyle]="{'background-image': 'url(' + data.headerImage + ')'}">
+      </div>
+    </div>
+    <!-- Content -->
+    <ion-grid class="ion-no-padding" *ngIf="data != null">
+      <ion-row class="ion-no-padding">
+        <ion-col class="background-primary ion-padding" size="12">
+          <span class="text-size-sm text-color-primary font-light">
+            {{data.date}}</span>
+          <h2 class="text-size-lg text-color-primary font-bold ion-no-margin">
+            {{data.title}}</h2>
+          <ion-button class="button-icon ion-text-capitalize">
+            <ion-icon slot="start" class="icon-medium" [name]="data.iconLike">
+            </ion-icon>
+            {{data.likes}}
+          </ion-button>
+          <ion-button class="button-icon ion-text-capitalize">
+            <ion-icon slot="start" class="icon-medium" [name]="data.iconComment">
+            </ion-icon>
+            {{data.comments}}
+          </ion-button>
+          <ion-item lines="none" class="transparent ion-no-padding"
+          *ngFor="let item of data.items;let i = index">
+            <ion-label>
+              <p class="text-size-sm text-color-secondary font-regular ion-text-wrap">
+                {{item.description}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-page>

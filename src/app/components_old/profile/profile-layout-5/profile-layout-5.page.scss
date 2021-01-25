@@ -1,0 +1,25 @@
+/* Style component 5
+========================================================*/
+:host {
+  --cs-size-avatar: 120px;
+}
+/* Settings Card
+=========================================*/
+
+ion-card {
+  box-shadow: none;
+  ion-avatar {
+    width: var(--cs-size-avatar, 120px) !important;
+    height: var(--cs-size-avatar, 120px) !important;
+    margin: 15px auto 20px;
+    border: 2px solid var(--cs-background-border, #CBCBCB);
+  }
+}
+/* Social Share
+=========================================*/
+
+.social-share {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}

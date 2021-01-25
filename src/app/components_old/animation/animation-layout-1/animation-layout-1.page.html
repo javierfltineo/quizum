@@ -1,0 +1,24 @@
+<!-- ANIMATION --COMPONENT 1 -->
+<ion-grid class="ion-no-padding" *ngIf="data != null">
+  <ion-row>
+    <ion-col class="ion-no-padding" size="12">
+      <ion-list appAnimateItems className="fadeInLeft">
+        <ion-item class="default-item box-shadow animation-normal opacity-0" lines="none"
+        *ngFor="let entry of data;" (click)="onItemClickFunc(entry)">
+          <!-- Avatar Image -->
+          <ion-thumbnail>
+            <img [src]="entry.image">
+          </ion-thumbnail>
+          <!-- Avatar Title -->
+          <ion-label class="ion-padding-start">
+            <h2 class="text-size-md text-color-primary
+            font-bold ion-text-wrap">{{entry.title}}</h2>
+            <h3 class="text-size-sm text-color-secondary
+            font-regular ion-text-wrap">{{entry.subtitle}}</h3>
+          </ion-label>
+          <ion-checkbox [(ngModel)]="entry.isChecked"></ion-checkbox>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>

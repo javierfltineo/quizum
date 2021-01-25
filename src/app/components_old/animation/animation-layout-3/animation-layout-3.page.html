@@ -1,0 +1,19 @@
+<!-- ANIMATION --COMPONENT 3 -->
+<ion-grid *ngIf="data && data.items">
+  <ion-row appAnimateItems className="slideInUp">
+    <ion-col size="12" size-md="6" class="animation-normal opacity-0" *ngFor="let item of data.items">
+      <ion-card class="border-radius background-size"
+        (click)="onItemClickFunc(item.title)"
+        [ngStyle]="{'background-image': 'url(' + item.image + ')'}">
+        <ion-card-content>
+          <ion-icon class="icon-round" [name]="item.icon"></ion-icon>
+            <!-- Title and Submenu -->
+            <h1 class="text-size-xl text-color-primary font-bold">
+              {{item.title}}</h1>
+            <h2 class="text-size-md text-color-primary font-light">
+              {{item.subtitle}}</h2>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

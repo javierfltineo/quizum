@@ -1,0 +1,21 @@
+/*  Style component 2
+===========================================*/
+// Settings Big Image
+
+.background-size {
+  height: 50vh;
+  position: relative;
+}
+
+.avatar-info {
+  margin-top: -100px;
+  border-bottom: 1px solid var(--cs-background-border, #CBCBCB);
+
+  .avatarName {
+    margin-left: 55px;
+  }
+}
+
+ion-thumbnail {
+  margin: auto !important;
+}

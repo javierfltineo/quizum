@@ -1,0 +1,85 @@
+/* Settings Scroll Segment
+===========================================*/
+// Setting scrollable toolbar
+
+:host {
+  --st-scrollable-toolbar-padding-left: 5px !important;
+}
+// Setting scroll button
+
+.ion-color-primary {
+  background: var(--cs-background-primary) !important;
+  --ion-color-contrast: var(--cs-background-accent) !important;
+}
+
+.page1 {
+  ion-card {
+    background: var(--cs-background-secondary) !important;
+
+    .icon-chatbubbles {
+      flex: unset;
+
+      .icon-large {
+        color: var(--cs-icon-color-accent, #FF9900);
+      }
+    }
+
+    .social-share {
+      display: flex;
+    }
+  }
+}
+
+.page2 {
+  ion-card {
+    background: var(--cs-background-secondary) !important;
+    display: inline-flex;
+    position: relative;
+    width: calc(100% - 16px);
+    flex: none;
+
+    ion-card-header {
+      width: 50% !important;
+      height: auto !important;
+      min-height: 150px !important;
+    }
+
+    .background-size {
+      height: 100px !important;
+    }
+
+    ion-card-content {
+      width: 50%;
+      align-self: center;
+
+      ion-badge {
+        margin-top: 8px;
+      }
+    }
+  }
+}
+
+.page3 {
+  ion-card {
+    background: var(--cs-background-secondary) !important;
+    display: inline-flex;
+    position: relative;
+    width: calc(100% - 16px);
+    flex: none;
+
+    ion-card-header {
+      width: 50%;
+      align-self: center;
+    }
+
+    .background-size {
+      height: 100%;
+    }
+
+    ion-card-content {
+      width: 50%;
+      height: auto !important;
+      min-height: 150px;
+    }
+  }
+}

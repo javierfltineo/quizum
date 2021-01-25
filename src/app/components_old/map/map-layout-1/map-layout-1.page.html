@@ -1,0 +1,87 @@
+<!--Theme GMAPS -- COMPONENT 1 -->
+<ion-page class="ion-page" *ngIf="viewEntered">
+  <!-- Header -->
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title class="ion-text-capitalize">{{data.toolbarTitle}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <!--Content -->
+  <ion-content scrollEvents="true" parallax-header>
+    <div class="header-image">
+      <agm-map *ngIf="data != null"
+      [latitude]="data.map.lat"
+      [longitude]="data.map.lng"
+      [zoom]="data.map.zoom"
+      [mapTypeControl]="data.map.mapTypeControl"
+      [streetViewControl]="data.map.streetViewControl"
+      [styles]="data.map.styles">
+        <agm-marker [latitude]="data.map.lat"
+        [longitude]="data.map.lng">
+        </agm-marker>
+      </agm-map>
+    </div>
+    <ion-grid class="ion-no-padding" *ngIf="data != null">
+      <ion-row>
+        <ion-col size="12" class="ion-no-padding background-primary">
+          <ion-card class="ion-no-padding no-box-shadow ion-no-margin transparent">
+            <ion-item class="transparent" lines="none">
+              <ion-label class="ion-padding-top ion-padding-end">
+                <h1 class="text-size-xl text-wrap text-color-primary font-bold">
+                  {{data.title}}</h1>
+              </ion-label>
+            </ion-item>
+            <ion-item class="transparent ion-no-padding" lines="none">
+              <ion-label class="ion-align-items-center ion-padding-start">
+                <span *ngFor="let item of data.iconsStars;let i = index"
+                (click)="onRatesFunc(data.iconsStars, i, $event)">
+                  <i *ngIf="item.isActive" class="icon {{item.iconActive}} icon-medium"></i>
+                  <i *ngIf="!item.isActive" class="icon {{item.iconInactive}} icon-medium"></i>
+                </span>
+                <span class="ion-margin-start font-bold text-color-secondary text-size-sm">
+                  {{data.reviews}}</span>
+              </ion-label>
+            </ion-item>
+            <ion-card-content>
+              <h1 class="text-size-md font-regular no-margin text-color-primary ion-text-wrap">
+                {{data.titleDescription}}</h1>
+              <p class="ion-padding-top ion-text-wrap text-color-secondary text-size-sm font-regular">
+                {{data.contentDescription}}</p>
+              <!--- Info Section -->
+              <ion-list lines="none">
+                <ion-item class="transparent ion-no-padding" lines="none">
+                  <i slot="start" class="icon {{data.iconLoacation}} icon-medium"></i>
+                  <p class="ion-no-margin font-regular text-color-secondary text-size-p">
+                    {{data.iconLoacationText}}</p>
+                </ion-item>
+                <ion-item class="transparent ion-no-padding" lines="none">
+                  <i slot="start" class="icon {{data.iconWatch}} icon-medium"></i>
+                  <p class="ion-no-margin font-regular text-color-secondary text-size-p">
+                    {{data.iconWatchText}}</p>
+                </ion-item>
+                <ion-item class="transparent ion-no-padding" lines="none">
+                  <i slot="start" class="icon {{data.iconPhone}} icon-medium"></i>
+                  <p class="ion-no-margin font-regular text-color-secondary text-size-p">
+                    {{data.iconPhoneText}}</p>
+                </ion-item>
+                <ion-item class="transparent ion-no-padding" lines="none">
+                  <i slot="start" class="icon {{data.iconEarth}} icon-medium"></i>
+                  <p class="ion-no-margin font-regular text-color-secondary text-size-p">
+                    {{data.iconEarthText}}</p>
+                </ion-item>
+                <ion-item class="transparent ion-no-padding" lines="none">
+                  <i slot="start" class="icon {{data.iconEmail}} icon-medium"></i>
+                  <p class="ion-no-margin font-regular text-color-secondary text-size-p">
+                    {{data.iconEmailText}}</p>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-page>

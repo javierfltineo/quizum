@@ -1,0 +1,27 @@
+ion-grid {
+  height: 100%;
+
+  ion-row {
+    height: 100%;
+  }
+}
+
+ion-item {
+  --background: var(--cs-background-secondary, #32313B);
+}
+
+.textarea {
+  min-height: 280px;
+  height: calc(100% - 200px);
+
+  ion-item {
+    height: 100%;
+    width: 100% !important;
+    display: -webkit-inline-box;
+
+    ion-textarea {
+      height: 100%;
+      width: 100% !important;
+    }
+  }
+}
