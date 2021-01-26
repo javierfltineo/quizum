@@ -15,7 +15,11 @@ const routes: Routes = [
   {
     path: 'deck/:id',
     loadChildren: () => import('./pages/deck/deck.module').then(m => m.DeckModule)
+  },  {
+    path: 'login',
+    loadChildren: () => import('./pagesMeues/login/login.module').then( m => m.LoginPageModule)
   },
+
 
 ];
 

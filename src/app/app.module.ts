@@ -19,7 +19,7 @@ import { ToastService } from './services/toast-service';
 import { LoadingService } from './services/loading-service';
 
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
@@ -40,12 +40,14 @@ import { environment } from '../environments/environment';
     IonicStorageModule.forRoot(),
     SuperTabsModule.forRoot(),
     AppRoutingModule,
+    HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar, BarcodeScanner,
     SplashScreen, ToastService, LoadingService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    // provide: RouteReuseStrategy,
+    { multi: true, useClass: IonicRouteStrategy, provide: HTTP_INTERCEPTORS,},
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

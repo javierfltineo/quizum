@@ -1,0 +1,23 @@
+
+.login{
+    text-align: center;
+    // align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+    
+    &-inputs{
+        
+        background-color: white;
+        color: black;
+        left: 4rem;
+        width: 15rem;
+        border-radius: 10px;
+        height: 2rem;
+        margin-bottom: 2rem;
+        
+    }
+    &-labels{
+        color:white;
+        
+    }
+}
