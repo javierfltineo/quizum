@@ -6,3 +6,20 @@ ion-row {
 ion-item {
   --background: transparent;
 }
+ion-col{
+  margin-bottom: 2.5rem;
+  height: auto;
+}
+
+ion-item{
+  margin-bottom: 0.25rem;
+  padding-bottom: 0.1rem;
+  
+}
+
+.respuesta{
+  position: absolute;
+  background-color: red;
+
+  
+}

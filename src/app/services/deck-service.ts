@@ -1,16 +1,32 @@
 import { IService } from './IService';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, queueScheduler } from 'rxjs';
 import { AppSettings } from './app-settings';
 import { ToastService } from './toast-service';
 import { LoadingService } from './loading-service';
+import { Mazo } from '../models/mazo.model';
+
+
+import { BaseService } from './meus/base.service';
 
 @Injectable({ providedIn: 'root' })
 export class DeckService implements IService {
 
-    constructor(public af: AngularFireDatabase, private loadingService: LoadingService, private toastCtrl: ToastService) { }
+    // constructor(public af: AngularFireDatabase, private loadingService: LoadingService, private toastCtrl: ToastService ,private mazoService:BaseService) { }
+    constructor(public af: AngularFireDatabase, private loadingService: LoadingService, private toastCtrl: ToastService ) { }
+    public mazos:  Mazo[] = []
+    
+    public u :Mazo
 
+    public decks: [] 
+    
+    public aux;
+
+    public userId: string;
+    
+
+    
     getId = (): string => 'dragAndDrop';
 
     getTitle = (): string => 'Drag and Drop';
@@ -23,31 +39,71 @@ export class DeckService implements IService {
         ];
     }
 
-    //* Data Set for page 2
+    
     getDataForList = (): any => {
+       
+        
         return {
             'toolbarTitle': 'Decks',
             "title": "Estudia un mazo!",
             "subtitle": "Selecciona el mazo que desees estudiar para comenzar.",
             "items": [
-                {
-                    "id": 1,
-                    "title": "Python",
-                    "subtitle": "Todo sobre python",
-                    "image": "assets/imgs/decks/python.png",
-                    "iconDelete" : "trash",
-                    "msgDelete" : "Eliminar",
-                },
-                {
-                    "id": 2,
-                    "title": "Odoo",
-                    "subtitle": "Aprende todo sobre el mejor ERP Open Source",
-                    "image": "assets/imgs/decks/odoo.png",
-                    "iconDelete" : "trash",
-                    "msgDelete" : "Eliminar",
-                },
-            ]
+             {
+                 "id": this.mazos[0].id ,
+                 "title": this.mazos[0].name,
+                 "subtitle": this.mazos[0].description,
+                 "image": "assets/imgs/decks/python.png",
+                 "iconDelete" : "trash",
+                 "msgDelete" : "Eliminar",
+             },
+             {
+                 "id": this.mazos[1].id ,
+                 "title": this.mazos[1].name,
+                 "subtitle": this.mazos[1].description,
+                 "image": "assets/imgs/decks/odoo.png",
+                 "iconDelete" : "trash",
+                 "msgDelete" : "Eliminar",
+             },
+             ]
         };
+    }
+
+    //pruebas sin servidor
+
+    getMazos(){
+        
+        const m = new Mazo(1,"Python","hola holita")
+        const r = new Mazo(2,"Angular","Aprende python rapido y sencillo")
+        const b = new Mazo(3,"Ionic","Aprende python rapido y sencillo")
+
+        this.mazos.push(m)
+        this.mazos.push(r)
+        this.mazos.push(b)
+            
+        var decks = []
+        
+        for(let i= 0; i< this.mazos.length;i++){
+            
+            decks[i] = {
+                'id':this.mazos[i].id, 
+                'title':this.mazos[i].name,
+                'subtitle': this.mazos[i].description,
+                "image": "assets/imgs/decks/python.png",
+                "iconDelete" : "trash",
+                "msgDelete" : "Eliminar",
+            }
+            
+
+        }
+
+        this.aux = {
+            'toolbarTitle': 'Decks',
+            "title": "Estudia un mazo!",
+            "subtitle": "Selecciona el mazo que desees estudiar para comenzar.",
+            "items": decks
+        }
+        
+        
     }
 
     load(item: any): Observable<any> {
@@ -69,11 +125,37 @@ export class DeckService implements IService {
                     });
             });
         } else {
+            
             return new Observable(observer => {
                 that.loadingService.hide();
-                observer.next(this.getDataForList());
+                this.getMazos()
+                // observer.next(this.getDataForList());
+                observer.next(this.aux);
                 observer.complete();
             });
         }
     }
+    // getMazos(){
+        //llamamos al servicio para recopilar todos los mazos
+        // const mazos = this.mazoService.getMazoByUserId(this.userId) 
+        // var decks = []
+        //
+        // for(let i= 0; i< mazos.length;i++){
+        //     
+        //     decks[]  = {
+        //         'id':mazos[0].id, 
+        //         'title':mazos[0].name,
+        //         'subtitle': mazos[0].description,
+        //         "image": "assets/imgs/decks/python.png",
+        //         "iconDelete" : "trash",
+        //         "msgDelete" : "Eliminar",
+        //     }
+        // }
+        //  this.aux = {
+        //     'toolbarTitle': 'Decks',
+        //     "title": "Estudia un mazo!",
+        //     "subtitle": "Selecciona el mazo que desees estudiar para comenzar.",
+        //     "items": decks
+        // }
+    // }
 }
