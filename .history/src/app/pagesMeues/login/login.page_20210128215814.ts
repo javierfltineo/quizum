@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
     console.log(event);
   }
   
-  onLogin(event) {
+  onLogin($event) {
     console.log(this.username, this.password);
     // var hola = this.baseService.getAllMazo();
     console.log();

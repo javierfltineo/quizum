@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    Login
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <cs-login-layout-1
+    [data]="data"
+    (onLogin)="onLogin($event)"
+    (onRegister)="onRegister($event)">
+  </cs-login-layout-1>
+  <div class="login">
+    
+      
+        <ion-label 
+        class="login-labels"
+        for="username">Usuario:</ion-label>
+        
+        <ion-input
+        class="login-inputs"
+        type="text"
+        name="username"
+        [(ngModel)]="username"></ion-input>
+
+      
+      
+      
+        <ion-label 
+        class="login-labels"
+        for="username">Contraseña:</ion-label>
+        
+        <ion-input
+        
+        class="login-inputs"
+        type="password"
+        name="password"
+        [(ngModel)]="password"></ion-input>
+      
+        <ion-button (click)="login()">Logearse</ion-button>
+      
+  </div>
+</ion-content>

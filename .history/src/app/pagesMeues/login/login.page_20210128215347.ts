@@ -10,15 +10,13 @@ export class LoginPage implements OnInit {
   @Input() username:string;
   @Input() password:string;
 
-  data = {};
-  isUsernameValid = true;
-  isPasswordValid = true;
+  data = {}
   
   // constructor(public baseService: BaseService) { }
   constructor() { }
 
   ngOnInit() {
-    this.data = {
+    data = {
       'headerTitle'     : 'Login + logo 1',
       "background"      : "assets/imgs/background/26.jpg",
       "logo"            : "assets/imgs/logo/1.png",
@@ -36,8 +34,12 @@ export class LoginPage implements OnInit {
   onLogin(event) {
     console.log(event);
   }
+
+  onRegister(event) {
+    console.log(event);
+  }
   
-  onLogin(event) {
+  login($event) {
     console.log(this.username, this.password);
     // var hola = this.baseService.getAllMazo();
     console.log();

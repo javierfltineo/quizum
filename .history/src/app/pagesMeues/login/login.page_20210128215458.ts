@@ -10,9 +10,8 @@ export class LoginPage implements OnInit {
   @Input() username:string;
   @Input() password:string;
 
-  data = {};
-  isUsernameValid = true;
-  isPasswordValid = true;
+  data = {}
+  isUsernameValid = false;
   
   // constructor(public baseService: BaseService) { }
   constructor() { }
@@ -36,8 +35,12 @@ export class LoginPage implements OnInit {
   onLogin(event) {
     console.log(event);
   }
+
+  onRegister(event) {
+    console.log(event);
+  }
   
-  onLogin(event) {
+  login($event) {
     console.log(this.username, this.password);
     // var hola = this.baseService.getAllMazo();
     console.log();

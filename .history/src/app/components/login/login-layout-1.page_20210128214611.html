@@ -6,6 +6,11 @@
     <ion-grid no-padding>
       <ion-row class="ion-align-items-center ion-padding-horizontal" *ngIf="data != null">
         <ion-col class="ion-text-center "size="12" size-md="8" push-md="2">
+          <ion-img class="ion-margin-bottom ion-float-start" [src]="data.logo">
+          </ion-img>
+          <ion-button class="clear-button ion-text-capitalize ion-float-end"
+          fill="clear" (click)="onForgotPassword()">{{data.skip}}
+            </ion-button>
           <div class="ion-margin-top clearfix">
           </div>
           <h1 class="text-size-md text-color-primary font-bold
@@ -21,7 +26,7 @@
             </ion-label>
               <ion-input required type="text"
               [placeholder]="data.username"
-              [(ngModel)]="username"
+              [(ngModel)]="item.username"
               [ngModelOptions]="{standalone: true}">
             </ion-input>
               <ion-icon *ngIf="!isUsernameValid"
@@ -35,20 +40,33 @@
             </ion-label>
               <ion-input required type="password"
               [placeholder]="data.password"
-              [(ngModel)]="password"
+              [(ngModel)]="item.password"
               [ngModelOptions]="{standalone: true}">
             </ion-input>
               <ion-icon *ngIf="!isPasswordValid"
               class="icon-small" name="remove-circle">
             </ion-icon>
             </ion-item>
+            <ion-button class="clear-button ion-text-capitalize ion-float-end
+            ion-margin-top ion-margin-bottom" fill="clear"
+             (click)="onForgotPassword()">{{data.forgotPassword}}
+            </ion-button>
             <div class="clearfix"></div>
             <ion-row class="ion-no-padding ion-margin-top">
-              <ion-col size="12">
+              <ion-col size="6">
+                <!---Login ion-button-->
+                <ion-button class="box-shadow facebookButton button-icon
+                ion-text-capitalize ion-margin-top ion-margin-bottom" expand="block"
+                (click)="onLoginFunc()">
+                  <ion-icon class="icon-medium" slot="end" name="logo-facebook">
+                  </ion-icon>{{data.facebookLogin}}
+                </ion-button>
+              </ion-col>
+              <ion-col size="6">
                 <!---Login ion-button-->
                 <ion-button class="box-shadow default-button ion-text-capitalize
                 ion-margin-top ion-margin-bottom" expand="block"
-                (click)="onLogin()">{{data.login}}
+                (click)="onLoginFunc()">{{data.login}}
               </ion-button>
               </ion-col>
             </ion-row>
