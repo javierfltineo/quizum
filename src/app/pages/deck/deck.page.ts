@@ -56,10 +56,10 @@ export class DeckPage {
     console.warn(event);
     console.log('onDelete');
   }
-  getUser(){
-    console.log("hola")
-    this.http.getData();
-  }
+  // getUser(){
+  //   console.log("hola")
+  //   this.http.getData();
+  // }
   
   pruebaPreguntas(){
     this.items = [
