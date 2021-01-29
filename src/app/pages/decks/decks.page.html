@@ -9,7 +9,7 @@
     </ion-toolbar>
   </ion-header>
   <!-- Content -->
-  <ion-content class="transparent">
+  <ion-content>
     <cs-deck-list
       [data]="data"
       (onUndo)="onUndo($event)"
@@ -18,4 +18,11 @@
       (onItemClick)="onItemClick($event)">
     </cs-deck-list>
   </ion-content>
+  <div class = "bar bar-footer bar-assertive">
+
+      <button  class="box-shadow default-button ion-float-right add-button" ion-button color="save">
+        <ion-icon name="add-outline"></ion-icon>
+      </button>
+    
+ </div>
 </ion-app>
