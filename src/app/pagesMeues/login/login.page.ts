@@ -32,10 +32,6 @@ export class LoginPage implements OnInit {
       "title"           : "Login to your account",
     }
   }
-
-  onLogin(event) {
-    console.log(event);
-  }
   
   onLogin(event) {
     console.log(this.username, this.password);
