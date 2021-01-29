@@ -1,19 +1,46 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
     <ion-menu side="start" contentId="main-content" type="overlay">
-      <!-- Settings Toolbar -->
-      <ion-header class="background-size"
-      [ngStyle]="{'background-image': 'url(' + headerMenuItem.background + ')'}">
-          <ion-item class="transparent text-center" lines="none">
-            <ion-label class="ion-text-center text-size-md text-color-primary font-bold ion-text-wrap">
-                <img class="ion-margin-bottom" [src]="headerMenuItem.image">
-                <div class="clearfix ion-margin-top ion-padding-bottom ion-padding-top"></div>
-                {{headerMenuItem.title}}
-            </ion-label>
-          </ion-item>
-      </ion-header>
+  
       <!-- Content -->
       <ion-content>
+        <ion-row *ngIf="data != null">
+          <ion-col size="12">
+            <ion-card class="ion-text-center box-shadow transparent">
+              <ion-item class="transparent" lines="none">
+                <ion-avatar slot="start">
+                  <img [src]="data.image" alt="">
+                </ion-avatar>
+                <ion-label>
+                  <h1 class="text-size-md ion-text-center text-color-primary font-bold ion-text-wrap">{{data.title}}</h1>
+                  
+                  <div class="social-share">
+                    <!-- Followers-->
+                    <ion-item class="transparent" lines="none" (click)="buttonClick()">
+                      <ion-label class="ion-text-center">
+                        <span class="text-size-sm text-color-secondary font-regular">
+                          {{data.valueFollowers}}</span>
+                        <div class="clearfix"></div>
+                        <h2 class="text-size-sm text-color-secondary font-regular">
+                          {{data.followers}}</h2>
+                      </ion-label>
+                    </ion-item>
+                    <!-- Following -->
+                    <ion-item class="transparent" lines="none" (click)="buttonClick()">
+                      <ion-label class="ion-text-center">
+                        <span class="text-size-sm text-color-secondary font-regular">
+                          {{data.valueFollowing}}</span>
+                        <div class="clearfix"></div>
+                        <h2 class="text-size-sm text-color-secondary font-regular">
+                          {{data.following}}</h2>
+                      </ion-label>
+                    </ion-item>
+                  </div>
+                </ion-label>
+              </ion-item>
+            </ion-card>
+          </ion-col>
+        </ion-row>
         <ion-grid class="ion-no-padding">
           <ion-row>
             <ion-col size="12" class="ion-no-padding">

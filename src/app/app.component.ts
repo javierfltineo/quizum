@@ -21,6 +21,8 @@ export class AppComponent {
   }
   isEnabledRTL: boolean = false;
 
+  data = {}
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -39,6 +41,17 @@ export class AppComponent {
   }
 
   initializeApp() {
+    this.data = {
+      "image": "assets/imgs/avatar/13.jpg",
+      "title": "Carolyn Guerrero",
+      "subtitle": "Extreme coffee lover. Twitter maven. Internet practitioner.",
+      "followers": "Followers",
+      "valueFollowers": "439",
+      "following": "Following",
+      "valueFollowing": "297",
+      "posts": "Posts",
+      "valuePosts": "43",
+    }
     this.platform.ready().then(() => {
       this.statusBar.overlaysWebView(false);
       this.statusBar.backgroundColorByHexString('#000000');

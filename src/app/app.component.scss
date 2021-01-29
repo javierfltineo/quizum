@@ -27,3 +27,17 @@
     }
   }
 }
+/* Style component 3
+========================================================*/
+.social-share {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+ion-card{
+  display: flex;
+  flex-direction: column;
+  width: 100% !important;
+  margin: 0 !important;
+}
