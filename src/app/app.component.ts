@@ -22,6 +22,7 @@ export class AppComponent {
   isEnabledRTL: boolean = false;
 
   data = {}
+  showMenu = true;
 
   constructor(
     private platform: Platform,
@@ -31,6 +32,7 @@ export class AppComponent {
     private exportService: ExportService,
     private navController: NavController
   ) {
+    this.showMenu = true;
     this.isEnabledRTL = localStorage.getItem('isEnabledRTL') == "true";
     //console.log(JSON.stringify(exportService.export()));
     this.initializeApp();
@@ -38,6 +40,7 @@ export class AppComponent {
     this.menuService.load().subscribe(d => {
       this.headerMenuItem = d;
   });
+
   }
 
   initializeApp() {
