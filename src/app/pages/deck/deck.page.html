@@ -10,7 +10,7 @@
   </ion-header>
  
   <!-- Content -->
-  <ion-content class="transparent">
+  <ion-content>
     <!-- FORMS --COMPONENT 1 -->
     <ion-grid class="ion-padding" *ngIf="data != null">
       
@@ -62,15 +62,16 @@
           </ion-textarea>
           </ion-item>
         </ion-col> -->
-        <ion-col  size="12" class="textarea" style="max-height: 135px;">
-          <ion-item class="box-shadow border-radius input" lines="none" style="max-height: 135px;">
-            <p>¿ {{questionShown.pregunta}} ?</p>
-          </ion-item>
-          <ion-item  *ngIf="questionShown.mostrar" class="box-shadow border-radius input " lines="none" style="max-height: 135px;">
-            <p> {{questionShown.respuesta}} </p>
+        <ion-col size="12" class="textarea" style="max-height: 135px;">
+          <ion-item class="box-shadow border-radius input flashcard" #flashcard lines="none" style="max-height: 135px;"
+            [ngClass]="{'flip': flip_card == true, 'unflip': flip_card == false}" >
+            <p *ngIf="!questionShown.mostrar">¿ {{questionShown.pregunta}} ?</p>
+            <p *ngIf="questionShown.mostrar"> {{questionShown.respuesta}} </p>
           </ion-item>
           <ion-button class="default-button box-shadow ion-text-capitalize"
-              expand="block" (click)="showAnswer()"> Respuesta
+              expand="block" (click)="toogleAnswer()"> 
+              <span *ngIf="!questionShown.mostrar">Respuesta</span>
+              <span *ngIf="questionShown.mostrar">Pregunta</span>
           </ion-button>
           
         </ion-col>
