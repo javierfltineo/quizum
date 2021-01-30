@@ -14,10 +14,12 @@ import { BaseService } from './meus/base.service';
 export class DeckService implements IService {
 
     // constructor(public af: AngularFireDatabase, private loadingService: LoadingService, private toastCtrl: ToastService ,private mazoService:BaseService) { }
-    constructor(public af: AngularFireDatabase, private loadingService: LoadingService, private toastCtrl: ToastService ) { }
+    constructor(public af: AngularFireDatabase, private loadingService: LoadingService, private toastCtrl: ToastService, private  userService:BaseService) { }
     public mazos:  Mazo[] = []
     
     public u :Mazo
+
+    public mazo : any[] = []
 
     public decks: [] 
     
@@ -135,27 +137,42 @@ export class DeckService implements IService {
             });
         }
     }
-    // getMazos(){
+     getMazos2(){
         //llamamos al servicio para recopilar todos los mazos
-        // const mazos = this.mazoService.getMazoByUserId(this.userId) 
-        // var decks = []
-        //
-        // for(let i= 0; i< mazos.length;i++){
-        //     
-        //     decks[]  = {
-        //         'id':mazos[0].id, 
-        //         'title':mazos[0].name,
-        //         'subtitle': mazos[0].description,
-        //         "image": "assets/imgs/decks/python.png",
-        //         "iconDelete" : "trash",
-        //         "msgDelete" : "Eliminar",
-        //     }
-        // }
-        //  this.aux = {
-        //     'toolbarTitle': 'Decks',
-        //     "title": "Estudia un mazo!",
-        //     "subtitle": "Selecciona el mazo que desees estudiar para comenzar.",
-        //     "items": decks
-        // }
-    // }
+        //  const mazos = this.mazoService.getMazoByUserId(this.userId) 
+        
+        //     console.log("hola")
+        //    var aux =   this.userService.getMazoByUserId().toPromise().then(
+        //      r => {
+                 
+        //        this.mazo = Object.values(r)
+                 
+        //      }
+        //  ).catch( e => {
+        //      alert('error fetching data');
+        //  });
+        //    console.log(aux)
+        //      console.log(this.mazo[0])
+        //      console.log("caracola")
+          
+     var decks = []
+    
+     for(let i= 0; i< this.mazo.length ;i++){
+         
+         decks[i]  = {
+             'id':this.mazo[i]._id, 
+             'title':this.mazo[i].titulo,
+             'subtitle': this.mazo[i].descripcion,
+             "image": "assets/imgs/decks/python.png",
+             "iconDelete" : "trash",
+             "msgDelete" : "Eliminar",
+         }
+     }
+      this.aux = {
+         'toolbarTitle': 'Decks',
+         "title": "Estudia un mazo!",
+         "subtitle": "Selecciona el mazo que desees estudiar para comenzar.",
+         "items": decks
+     }
+     }
 }

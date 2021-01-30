@@ -39,11 +39,11 @@ export class DeckListPage implements OnChanges {
   }
   
 
-  onItemClickFunc(item) {
-    if (event) {
-      event.stopPropagation();
-    }
-    this.onItemClick.emit(item);
-  }
+  // onItemClickFunc(item) {
+  //   if (event) {
+  //     event.stopPropagation();
+  //   }
+  //   this.onItemClick.emit(item);
+  // }
   
 }

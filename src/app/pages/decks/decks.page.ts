@@ -13,13 +13,27 @@ import { IntroPage } from '../intro-page/intro-page.page';
 export class DecksPage {
 
   data = {}
-  
+  public ids : string[] = []
+  // el id del mazos son strings
+  // public ids : string[]  = []
   constructor(
     private service:DeckService, 
     public modalController: ModalController) { 
         this.service.load(service.getAllThemes()[1]).subscribe(d => {
             this.data = d;
             console.log(this.data);
+            var a = this.data["items"]
+            //[0]["id"]
+            console.log(a);
+            console.log(a.length);
+            for(let i = 0; i<a.length ;i++){
+              
+              
+
+              this.ids[i]="/deck/" + a[i]["id"].toString()
+              console.log(this.ids[i]);
+              
+            }
         });
       let showWizard = localStorage.getItem("SHOW_START_WIZARD");
 
@@ -33,10 +47,10 @@ export class DecksPage {
      return await modal.present();
   }
 
-  onItemClick(event) {
-    console.warn(event);
-    console.log('onItemClick');
-  }
+  // onItemClick(event) {
+  //   console.warn(event);
+  //   console.log('onItemClick');
+  // }
 
   onDelete(event) {
     console.warn(event);

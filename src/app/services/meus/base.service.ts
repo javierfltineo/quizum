@@ -1,39 +1,54 @@
-import { HttpClient } from '@angular/common/http';
- import { Injectable } from '@angular/core';
+import { HttpBackend, HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
- @Injectable({
-   providedIn: 'root'
- })
+@Injectable({
+  providedIn: 'root'
+})
+
 export class BaseService {
-
- 
-
+  public httpClient: HttpClient
   constructor(
-    public httpClient: HttpClient,
-    public collection: string
-  ) { }
+    handler: HttpBackend
+    
+  ) { 
+    this.httpClient = new HttpClient(handler);
+  }
 
-  getAllMazo() {
-    return this.httpClient.get(environment.baseUrl +"/mazo", {})
+  getAll() {
+    return this.httpClient.get(environment.baseUrl , {})
   }
 
   getById(id: string) {
-    return this.httpClient.get(environment.baseUrl + this.collection + "/" + id, {})
+    return this.httpClient.get(environment.baseUrl  + "/" + id, {})
   }
 
   save(data: any) {
-    return this.httpClient.post(environment.baseUrl + this.collection, data)
+    return this.httpClient.post(environment.baseUrl , data)
   }
 
   delete(id: string) {
-    return this.httpClient.delete(environment.baseUrl + `${this.collection}/${id}`)
+    return this.httpClient.delete(environment.baseUrl )
   }
 
-  getMazoByUserId(mazoId: string) {
-    return this.httpClient.get(environment.baseUrl + this.collection + `/mazo/${mazoId}`, {})
+  // async getMazoByUserId() {
+  //   return await  this.httpClient.get(environment.baseUrl  + `mazo`, {})
+
+  // }
+  async getMazoByUserId() {
+    return await  this.httpClient.get(environment.baseUrl  + `mazo`, {}).toPromise().then(
+      r => {
+          
+         return Object.values(r)
+          
+      }
+  ).catch( e => {
+      alert('error fetching data');
+  });
 
   }
+
+  
 }
 
 

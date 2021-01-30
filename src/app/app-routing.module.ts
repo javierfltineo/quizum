@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./pagesMeues/login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'new-deck',
+    loadChildren: () => import('./pages/new-deck/new-deck.module').then( m => m.NewDeckPageModule)
+  },
 
 
 ];
