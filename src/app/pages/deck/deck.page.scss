@@ -5,21 +5,13 @@ ion-row {
 
 ion-item {
   --background: transparent;
+  margin-bottom: 0.1rem;
+  padding-bottom: 0.1rem;
 }
 ion-col{
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
   height: auto;
 }
 
-ion-item{
-  margin-bottom: 0.25rem;
-  padding-bottom: 0.1rem;
-  
-}
 
-.respuesta{
-  position: absolute;
-  background-color: red;
 
-  
-}

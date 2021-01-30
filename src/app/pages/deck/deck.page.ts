@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 import { DeckService } from '../../services/deck-service';
 import { ModalController } from '@ionic/angular';
 import { IntroPage } from '../intro-page/intro-page.page';
-import { HttpService } from 'src/app/services/HttpService';
+
+// import { BaseService } from 'src/app/services/meus/base.service';
+
 
 @Component({
   selector: 'app-deck',
@@ -12,17 +14,23 @@ import { HttpService } from 'src/app/services/HttpService';
   providers: [DeckService]
 })
 export class DeckPage {
-
+  
   data = {}
   item = {}
+
+
+  //Creadas por Artur
+  maxQuestions : number;
   
   questions : string[] = []
+
+  questionShown :any
 
   items = []
 
   constructor(
-    private service:DeckService, 
-    private http:HttpService,
+    
+    // public userService:BaseService,
     public modalController: ModalController) { 
         this.item = {
           'id' : 'asdfsdg34ver',
@@ -47,37 +55,65 @@ export class DeckPage {
      return await modal.present();
   }
 
-  onItemClick(event) {
-    console.warn(event);
-    console.log('onItemClick');
-  }
+  // onItemClick(event) {
+  //   console.warn(event);
+  //   console.log('onItemClick');
+  // }
 
   onDelete(event) {
     console.warn(event);
     console.log('onDelete');
   }
-  // getUser(){
-  //   console.log("hola")
-  //   this.http.getData();
-  // }
+
+//Pruebas de conexiones
+  //  getMazo(){
+  //    console.log("hola")
+  // //   var aux =   this.userService.getMazoByUserId().toPromise().then(
+  // //     r => {
+          
+  // //       this.mazo = Object.values(r)
+          
+  // //     }
+  // // ).catch( e => {
+  // //     alert('error fetching data');
+  // // })
+  //   const mazo = this.userService.getMazoByUserId()
+  //   console.log(mazo)
+  //     console.log(this.mazo[0])
+  //     console.log("caracola")
+  //     this.mazo = mazo
+  //  }
   
   pruebaPreguntas(){
     this.items = [
-  		{"pregunta": 'Cuál es la raíz cuadrada de 25', "respuesta": '5','mostrar':false},
-  		{"pregunta": 'Cuál es la raíz cuadrada de 25', "respuesta": '5','mostrar':false},
-      {"pregunta": 'Cuál es la raíz cuadrada de 25', "respuesta": '5','mostrar':false},
-      {"pregunta": ' Un español medio pierde alrededor de tres calcetines al año. Si los multiplicamos por toda la población española, eso supone un total de unos 120 millones de calcetines perdidos. ¿Dónde están esos 120 millones de calcetines?', "respuesta": 'Solo Dios lo sabe','mostrar':false}
-   	];
-  
+  		{"n":1,"pregunta": 'Cuál es la raíz cuadrada de 25', "respuesta": '5','mostrar':false},
+  		{"n":2,"pregunta": 'Cuál es la raíz cuadrada de 36', "respuesta": '6','mostrar':false},
+      {"n":3,"pregunta": 'Cuál es la raíz cuadrada de 49', "respuesta": '7','mostrar':false},
+      {"n":4,"pregunta": ' Un español medio pierde alrededor de tres calcetines al año. Si los multiplicamos por toda la población española, eso supone un total de unos 120 millones de calcetines perdidos. ¿Dónde están esos 120 millones de calcetines?', "respuesta": 'Solo Dios lo sabe','mostrar':false}
+     ];
+     this.questionShown = this.items[0]
+     this.maxQuestions =  Object.keys(this.items).length
+     
   }
 
-
+  changeQuestion(n:number, up :boolean){
+      if (n<this.maxQuestions && up){
+        this.questionShown= this.items[n]
+      }
+      if(n>1 && !up){
+        this.questionShown= this.items[n-2]
+      }
+  }
   showAnswer(n :number){
-    if( !this.items[n].mostrar ){
-      this.items[n].mostrar = true
-    }else{
-      this.items[n].mostrar = false
-    }
+      n = n -1
+    
+     if( !this.questionShown.mostrar ){
+       this.questionShown.mostrar = true
+     }else{
+       this.questionShown.mostrar = false
+     }
       
   }
+  
+ 
 }
