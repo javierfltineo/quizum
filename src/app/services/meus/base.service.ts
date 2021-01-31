@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 
 export class BaseService {
   public httpClient: HttpClient
+  public mazo : any[] = []
   constructor(
     handler: HttpBackend
     
@@ -36,16 +37,20 @@ export class BaseService {
 
   // }
   async getMazoByUserId() {
-    return await  this.httpClient.get(environment.baseUrl  + `mazo`, {}).toPromise().then(
+      await   this.httpClient.get(environment.baseUrl  + `mazo`, {}).toPromise().then(
       r => {
           
-         return Object.values(r)
-          
+          this.mazo = Object.values(r)
+            //  console.log(this.mazo)
       }
   ).catch( e => {
       alert('error fetching data');
   });
-
+    return await this.mazo
+    
+  }
+  login(username:string, password:string){
+    return   this.httpClient.post(environment.baseUrl  + `users/login`, {"username":username , "password":password})
   }
 
   

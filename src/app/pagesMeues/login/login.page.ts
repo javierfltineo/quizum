@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import {AppComponent} from '../../app.component';
 
-// import { BaseService } from 'src/app/services/meus/base.service';
+import { BaseService } from 'src/app/services/meus/base.service';
 
 @Component({
   selector: 'app-login',
@@ -15,9 +16,14 @@ export class LoginPage implements OnInit {
   data = {};
   isUsernameValid = true;
   isPasswordValid = true;
+  public user : any 
   
   // constructor(public baseService: BaseService) { }
-  constructor(private appComponent:AppComponent) { 
+  constructor(private appComponent:AppComponent,
+    public navCtrl: NavController,
+    public baseService: BaseService,
+
+    ) { 
     appComponent.showMenu = false;
   }
 
@@ -40,7 +46,22 @@ export class LoginPage implements OnInit {
   
   onLogin(event) {
     console.log(this.username, this.password);
-    // var hola = this.baseService.getAllMazo();
-    console.log();
+    var hola = this.baseService.login(this.username, this.password).toPromise().then(
+          r => {
+              
+            this.user = Object.values(r)
+            console.log(this.user)
+            if(this.user[0]){
+              this.navCtrl.navigateForward("/decks");
+            }
+
+              
+          }
+      ).catch( e => {
+          alert('error fetching data');
+      })
+     
+    
+    
   }
 }
