@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {AppComponent} from '../../app.component';
+
 // import { BaseService } from 'src/app/services/meus/base.service';
 
 @Component({
@@ -15,7 +17,9 @@ export class LoginPage implements OnInit {
   isPasswordValid = true;
   
   // constructor(public baseService: BaseService) { }
-  constructor() { }
+  constructor(private appComponent:AppComponent) { 
+    appComponent.showMenu = false;
+  }
 
   ngOnInit() {
     this.data = {
@@ -31,6 +35,7 @@ export class LoginPage implements OnInit {
       "login"           : "Login",
       "title"           : "Login to your account",
     }
+    
   }
   
   onLogin(event) {

@@ -13,5 +13,38 @@ ion-col{
   height: auto;
 }
 
+.flashcard {
+  background: #fff;
+}
 
 
+.flip {
+  animation-duration: 1.5s;
+  animation-name: slidein;
+}
+
+.unflip {
+  animation-duration: 1.5s;
+  animation-name: slideout;
+}
+
+@keyframes slidein {
+  from {
+    transform: rotateY(90deg);
+  }
+  
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes slideout {
+  from {
+    transform: rotateY(-90deg);
+  }
+  
+  to {
+    transform: rotateY(0deg);
+  }
+}
+  

@@ -1,7 +1,7 @@
 import { AppSettings } from '../../services/app-settings';
 import { Component } from '@angular/core';
 import { DeckService } from '../../services/deck-service';
-import { ModalController } from '@ionic/angular';
+import { IonItem, ModalController } from '@ionic/angular';
 import { IntroPage } from '../intro-page/intro-page.page';
 
 // import { BaseService } from 'src/app/services/meus/base.service';
@@ -25,6 +25,8 @@ export class DeckPage {
   questions : string[] = []
 
   questionShown :any
+
+  flip_card = false;
 
   items = []
 
@@ -97,21 +99,23 @@ export class DeckPage {
   }
 
   changeQuestion(n:number, up :boolean){
-      if (n<this.maxQuestions && up){
-        this.questionShown= this.items[n]
-      }
-      if(n>1 && !up){
-        this.questionShown= this.items[n-2]
-      }
+    this.flip_card = false;
+    if (n<this.maxQuestions && up){
+      this.questionShown= this.items[n]
+    }
+    if(n>1 && !up){
+      this.questionShown= this.items[n-2]
+    }
   }
-  showAnswer(n :number){
-      n = n -1
-    
-     if( !this.questionShown.mostrar ){
-       this.questionShown.mostrar = true
-     }else{
-       this.questionShown.mostrar = false
-     }
+  toogleAnswer(n :number, flashcard:IonItem){
+    var n = n -1;
+    if( !this.questionShown.mostrar){
+      this.flip_card = true;
+      this.questionShown.mostrar = true;
+    }else{
+      this.flip_card = false;
+      this.questionShown.mostrar = false;
+    }
       
   }
   
