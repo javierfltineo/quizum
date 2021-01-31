@@ -17,6 +17,7 @@ export class LoginPage implements OnInit {
   isUsernameValid = true;
   isPasswordValid = true;
   public user : any 
+  public badLogin : boolean = false
   
   // constructor(public baseService: BaseService) { }
   constructor(private appComponent:AppComponent,
@@ -46,7 +47,7 @@ export class LoginPage implements OnInit {
   
   onLogin(event) {
     console.log(this.username, this.password);
-    var hola = this.baseService.login(this.username, this.password).toPromise().then(
+    this.baseService.login(this.username, this.password).toPromise().then(
           r => {
               
             this.user = Object.values(r)
@@ -60,7 +61,7 @@ export class LoginPage implements OnInit {
       ).catch( e => {
           alert('error fetching data');
       })
-     
+      this.badLogin = true
     
     
   }

@@ -27,6 +27,7 @@
               <ion-icon *ngIf="!isUsernameValid"
               class="icon-small" name="remove-circle"
               ></ion-icon>
+              
             </ion-item>
             <!---Input field password-->
             <ion-item class="input" lines="none">
@@ -42,6 +43,7 @@
               class="icon-small" name="remove-circle">
             </ion-icon>
             </ion-item>
+            <p class="badLogin" *ngIf=" badLogin == true" >Usuario o contraseña incorrectos</p>
             <div class="clearfix"></div>
             <ion-row class="ion-no-padding ion-margin-top">
               <ion-col size="12">
@@ -52,6 +54,7 @@
                 </ion-button>
               </ion-col>
             </ion-row>
+            
           </form>
         </ion-col>
       </ion-row>
