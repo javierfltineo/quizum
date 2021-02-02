@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { Questions } from 'src/app/models/questions.model';
+import { BaseService } from 'src/app/services/meus/base.service';
 
 @Component({
   selector: 'app-new-questions',
@@ -14,16 +16,19 @@ export class NewQuestionsPage implements OnInit {
   data = {};
   
   
-  // constructor(public baseService: BaseService) { }
-  constructor() { }
+   constructor(public baseService: BaseService,public navCtrl: NavController,) { }
+  
 
   ngOnInit() {
     this.data = {
       'toolbarTitle': 'NUEVO MAZO',
-      'buttonName' :'Crear Pregunta',
+      'buttonCreate' :'Crear Pregunta',
+      'buttonSave' :'Guardar Mazo',
       'question':'Pregunta nº',
-      'questionText':'Escribe tu pregunta :',
-      'answerText':'Escribe tu respuesta :',
+      'questionText':'Pregunta: :',
+      'answerText':'Respuesta:',
+      'textareaPlaceholder':'Escribe tu pregunta',
+      'textareaPlaceholder2':'Escribe tu respuesta'
     }
   }
   
@@ -43,8 +48,10 @@ export class NewQuestionsPage implements OnInit {
     
   }
   saveDeck(){
+    console.log(this.questions)
     for(let i = 0;i< this.questions.length ; i++){
-      //llamada a guradar 
+        this.baseService.createQuestion(this.questions[i]["question"],this.questions[i]["answer"])
     }
+    this.navCtrl.navigateForward("/decks");
   }
 }

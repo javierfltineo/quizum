@@ -14,46 +14,47 @@
   <ion-content  class="transparent background-size">
     <ion-grid no-padding>
       <ion-row class="ion-align-items-center ion-padding-horizontal" >
-        
-       
-          
-          
-            
-          
-            
-            <ion-row class="ion-no-padding ion-margin-top">
+           <ion-row class="ion-no-padding ion-margin-top">
               <ion-col size="12">
-                <!---Login ion-button-->
-                <ion-button class="box-shadow default-button ion-text-capitalize
-                  ion-margin-top ion-margin-bottom" expand="block"
-                  (click)="createQuestion()">{{data.buttonName}}
+                <ion-button class="box-shadow default-button ion-text-capitalize button-top" expand="block"
+                  (click)="createQuestion()">{{data.buttonCreate}}
                 </ion-button>
               </ion-col>
             </ion-row>
-            
+       </ion-row>
+
+      <div class="padding_top">
+          <div class="border question"  *ngFor="let question of questions  " >
+              <p>{{data.question}}  {{question.position}} </p>
+              <p>{{data.questionText}}</p>
+              <ion-row class="ion-align-items-center ion-padding-horizontal" >
+                
+                <ion-textarea rows="3" 
+                class="border" 
+                [(ngModel)] = "question.question"
+                placeholder={{data.textareaPlaceholder}}>
         
-      </ion-row>
-      <div class="question"  *ngFor="let question of questions  " >
-          {{data.question}}  {{question.position}} 
-          <ion-row class="ion-align-items-center ion-padding-horizontal" >
-            <ion-row class="ion-no-padding ">
-              <ion-col size="12">
-                <p>{{data.questionText}}</p>
-                <textarea name="" id="" cols="36" rows="5" [(ngModel)] = "question.question"></textarea>
-              </ion-col>
-            </ion-row>
-          </ion-row>
-          <ion-row class="ion-align-items-center ion-padding-horizontal" >
-            <ion-row class="ion-no-padding ">
-              <ion-col size="12">
-                <p>{{data.answerText}}</p>
-                <textarea name="" id="" cols="36" rows="5" [(ngModel)] = "question.answers" ></textarea>
-              </ion-col>
-            </ion-row>
-            
+                </ion-textarea>
+              </ion-row>
+              <p>{{data.answerText}}</p>
+              <ion-row class="ion-align-items-center ion-padding-horizontal" >
+                
+                <ion-textarea rows="3" 
+                class="border" 
+                [(ngModel)] = "question.answer"
+                placeholder={{data.textareaPlaceholder2}}>
         
-          </ion-row>
-    </div>
+                </ion-textarea>
+              </ion-row>
+          </div>
+      </div>
+
+      <ion-row class="ion-no-padding ion-margin-top">
+        <ion-button class="box-shadow default-button ion-text-capitalize
+            button-bottom" expand="block"
+            (click)="saveDeck()">{{data.buttonSave}}
+          </ion-button>
+        </ion-row>
     </ion-grid>
     
   </ion-content>

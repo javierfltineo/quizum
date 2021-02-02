@@ -53,7 +53,7 @@ export class DeckService implements IService {
             "subtitle": "Selecciona el mazo que desees estudiar para comenzar.",
             "items": [
              {
-                 "id": this.mazos[0].id ,
+                 "id": this.mazos[0]._id ,
                  "title": this.mazos[0].name,
                  "subtitle": this.mazos[0].description,
                  "image": "assets/imgs/decks/python.png",
@@ -61,7 +61,7 @@ export class DeckService implements IService {
                  "msgDelete" : "Eliminar",
              },
              {
-                 "id": this.mazos[1].id ,
+                 "id": this.mazos[1]._id ,
                  "title": this.mazos[1].name,
                  "subtitle": this.mazos[1].description,
                  "image": "assets/imgs/decks/odoo.png",
@@ -89,7 +89,7 @@ export class DeckService implements IService {
         for(let i= 0; i< this.mazos.length;i++){
             
             decks[i] = {
-                'id':this.mazos[i].id, 
+                'id':this.mazos[i]._id, 
                 'title':this.mazos[i].name,
                 'subtitle': this.mazos[i].description,
                 "image": "assets/imgs/decks/python.png",

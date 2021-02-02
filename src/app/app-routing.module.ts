@@ -18,12 +18,13 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./pagesMeues/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'new-deck',
     loadChildren: () => import('./pages/new-deck/new-deck.module').then( m => m.NewDeckPageModule)
-  },  {
+  },
+  {
     path: 'new-questions',
     loadChildren: () => import('./pages/new-questions/new-questions.module').then( m => m.NewQuestionsPageModule)
   },
