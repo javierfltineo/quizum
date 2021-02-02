@@ -1,0 +1,61 @@
+<!-- lOGIN FROMA --COMPONENT 1 -->
+<ion-app>
+  <!-- Header -->
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>{{data.toolbarTitle}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+<ion-page class="ion-page">
+  <!-- Content -->
+  <ion-content  class="transparent background-size">
+    <ion-grid no-padding>
+      <ion-row class="ion-align-items-center ion-padding-horizontal" >
+        
+       
+          
+          
+            
+          
+            
+            <ion-row class="ion-no-padding ion-margin-top">
+              <ion-col size="12">
+                <!---Login ion-button-->
+                <ion-button class="box-shadow default-button ion-text-capitalize
+                  ion-margin-top ion-margin-bottom" expand="block"
+                  (click)="createQuestion()">{{data.buttonName}}
+                </ion-button>
+              </ion-col>
+            </ion-row>
+            
+        
+      </ion-row>
+      <div class="question"  *ngFor="let question of questions  " >
+          {{data.question}}  {{question.position}} 
+          <ion-row class="ion-align-items-center ion-padding-horizontal" >
+            <ion-row class="ion-no-padding ">
+              <ion-col size="12">
+                <p>{{data.questionText}}</p>
+                <textarea name="" id="" cols="36" rows="5" [(ngModel)] = "question.question"></textarea>
+              </ion-col>
+            </ion-row>
+          </ion-row>
+          <ion-row class="ion-align-items-center ion-padding-horizontal" >
+            <ion-row class="ion-no-padding ">
+              <ion-col size="12">
+                <p>{{data.answerText}}</p>
+                <textarea name="" id="" cols="36" rows="5" [(ngModel)] = "question.answers" ></textarea>
+              </ion-col>
+            </ion-row>
+            
+        
+          </ion-row>
+    </div>
+    </ion-grid>
+    
+  </ion-content>
+</ion-page>
+</ion-app>

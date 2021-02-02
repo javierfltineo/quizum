@@ -1,8 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import {AppComponent} from '../../app.component';
 
 import { BaseService } from 'src/app/services/meus/base.service';
+import { User } from 'src/app/models/user.model';
+
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,7 @@ export class LoginPage implements OnInit {
   data = {};
   isUsernameValid = true;
   isPasswordValid = true;
-  public user : any 
+  
   public badLogin : boolean = false
   
   // constructor(public baseService: BaseService) { }
@@ -47,22 +49,11 @@ export class LoginPage implements OnInit {
   
   onLogin(event) {
     console.log(this.username, this.password);
-    this.baseService.login(this.username, this.password).toPromise().then(
-          r => {
-              
-            this.user = Object.values(r)
-            console.log(this.user)
-            if(this.user[0]){
-              this.navCtrl.navigateForward("/decks");
-            }
-
-              
-          }
-      ).catch( e => {
-          alert('error fetching data');
-      })
-      this.badLogin = true
+    this.baseService.login(this.username, this.password)
     
+    this.badLogin = true
+      
     
   }
+  
 }

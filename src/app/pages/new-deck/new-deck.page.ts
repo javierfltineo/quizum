@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Questions } from 'src/app/models/questions.model';
 import { AppSettings } from 'src/app/services/app-settings';
+import { BaseService } from 'src/app/services/meus/base.service';
 import { IntroPage } from '../intro-page/intro-page.page';
 
 @Component({
@@ -10,47 +11,33 @@ import { IntroPage } from '../intro-page/intro-page.page';
   styleUrls: ['./new-deck.page.scss'],
 })
 export class NewDeckPage  {
-  questions :Questions[] = []
-  n : number = 0
+    @Input() deckName: string
+    @Input() deckDescription: string
 
   data = {};
   
   
   // constructor(public baseService: BaseService) { }
-  constructor() { }
+  constructor(public baseService:BaseService) { }
 
   ngOnInit() {
     this.data = {
       'toolbarTitle': 'NUEVO MAZO',
-      'buttonName' :'Crear Pregunta',
-      'question':'Pregunta nº',
-      'questionText':'Escribe tu pregunta :',
-      'answerText':'Escribe tu respuesta :',
+      'inputPlaceholder':"Nombre del mazo",
+      'textareaPlaceholder':"Elige una pequeña descripción para tu mazo",
+      'buttonName' :'Crear Mazo',
+      
     }
   }
   
-  createQuestion() {
-    
-    this.n ++ ;
-
-    //al crear la questions guardaremos tambien el id del mazo 
-     if(this.questions.length == 0){
-         //creamos el mazo y el post no devolvera el id del mismo que utilizaremos para crear las preguntas
-     }
-    //al crear la questions guardaremos tambien el id del mazo 
-    const q = new Questions(this.n,"","")
-    console.log(q)
-    this.questions.push(q)
-    console.log(this.questions)
-    
-  }
+  
   saveDeck(){
-    for(let i = 0;i< this.questions.length ; i++){
-      //llamada a guradar 
+    console.log(this.deckName, this.deckDescription)
+    this.baseService.createDeck(this.deckName,this.deckDescription)
     }
   }
   
-}
+
 
   
   

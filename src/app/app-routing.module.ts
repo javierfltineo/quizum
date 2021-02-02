@@ -3,7 +3,7 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
@@ -15,14 +15,20 @@ const routes: Routes = [
   {
     path: 'deck/:id',
     loadChildren: () => import('./pages/deck/deck.module').then(m => m.DeckModule)
-  },  {
+  },
+  {
     path: 'login',
     loadChildren: () => import('./pagesMeues/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'new-deck',
     loadChildren: () => import('./pages/new-deck/new-deck.module').then( m => m.NewDeckPageModule)
+  },  {
+    path: 'new-questions',
+    loadChildren: () => import('./pages/new-questions/new-questions.module').then( m => m.NewQuestionsPageModule)
   },
+
+  
 
 
 ];
