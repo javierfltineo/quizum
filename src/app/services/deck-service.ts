@@ -23,7 +23,7 @@ export class DeckService implements IService {
 
     public mazo : any[] = []
 
-    public decks: [] 
+    public decks: [] = []
     
     public aux;
 
@@ -54,7 +54,7 @@ export class DeckService implements IService {
             "items": [
              {
                  "id": this.mazos[0]._id ,
-                 "title": this.mazos[0].name,
+                 "title": this.mazos[0].title,
                  "subtitle": this.mazos[0].description,
                  "image": "assets/imgs/decks/python.png",
                  "iconDelete" : "trash",
@@ -62,7 +62,7 @@ export class DeckService implements IService {
              },
              {
                  "id": this.mazos[1]._id ,
-                 "title": this.mazos[1].name,
+                 "title": this.mazos[1].title,
                  "subtitle": this.mazos[1].description,
                  "image": "assets/imgs/decks/odoo.png",
                  "iconDelete" : "trash",
@@ -75,31 +75,22 @@ export class DeckService implements IService {
     //pruebas sin servidor
 
     getMazos(){
-        
-        const m = new Mazo("1","Python","hola holita")
-        const r = new Mazo("2","Angular","Aprende python rapido y sencillo")
-        const b = new Mazo("3","Ionic","Aprende python rapido y sencillo")
-
-        this.mazos.push(m)
-        this.mazos.push(r)
-        this.mazos.push(b)
-            
         var decks = []
-        
-        for(let i= 0; i< this.mazos.length;i++){
-            
+
+        var aux = this.baseService.getDecks()
+        for(let i = 0; i< aux.length ; i++){
+            console.log(aux[i]["_id"])
+            console.log(aux[i]["title"])
+            console.log(aux[i]["description"])
             decks[i] = {
-                'id':this.mazos[i]._id, 
-                'title':this.mazos[i].name,
-                'subtitle': this.mazos[i].description,
+                'id':aux[i]["_id"], 
+                'title':aux[i]["title"],
+                'subtitle': aux[i]["description"],
                 "image": "assets/imgs/decks/python.png",
                 "iconDelete" : "trash",
                 "msgDelete" : "Eliminar",
             }
-            
-
         }
-
         this.aux = {
             'toolbarTitle': 'Decks',
             "title": "Estudia un mazo!",
@@ -141,55 +132,5 @@ export class DeckService implements IService {
             });
         }
     }
-       getMazos2(){
-        //llamamos al servicio para recopilar todos los mazos
-        const id = this.baseService.getUserId()
-        console.log(id)
-        //const mazos = this.baseService.getMazoByUserId(this.userId) 
-        // console.log(mazos)
-        //     console.log("hola")
-        //     var aux =   this.baseService.getMazoByUserId(id).toPromise().then(
-        //       r => {
-                 
-        //         this.mazo = Object.values(r)
-        //          for(let i = 0; i< this.mazo.length;i++){
-        //              console.log(this.mazo[i])
-        //          }
-        //         //  console.log(this.mazo[0])
-        //         //  console.log(this.mazo[1])
-        //       }
-        //   ).catch( e => {
-        //       alert('error fetching data');
-        //   });
-         //   console.log(aux)
-        //      console.log(this.mazo[0])
-         //     console.log("caracola")
-          var aux =   this.baseService.getMazoByUserId(id)
-          setTimeout(myfunction, 3000)
-          function myfunction(){
-            aux = this.baseService.getMazo()
-            console.log(aux)
-          }
-          
-     var decks = []
     
-    //  for(let i= 0; i< this.mazo.length ;i++){
-         
-    //      decks[i]  = {
-    //          'id':this.mazo[i]._id, 
-    //          'title':this.mazo[i].titulo,
-    //          'subtitle': this.mazo[i].descripcion,
-    //          "image": "assets/imgs/decks/python.png",
-    //          "iconDelete" : "trash",
-    //          "msgDelete" : "Eliminar",
-    //      }
-    //  }
-     const i = {
-        'toolbarTitle': 'Decks',
-        "title": "Estudia un mazo!",
-        "subtitle": "Selecciona el mazo que desees estudiar para comenzar.",
-        "items": decks
-    }
-     return  i 
-     }
 }

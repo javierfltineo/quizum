@@ -24,6 +24,9 @@ export class BaseService {
   public question: any
   public question1: Questions
 
+  public test : any
+  public decks: Mazo[] = []
+
   //Ids
   public userId: string
   public deckId : string
@@ -58,13 +61,16 @@ export class BaseService {
     this.httpClient.get(environment.baseUrl  + `deck/user/`+ userId, {}).toPromise().then(
       r => {
          
-        this.mazo = Object.values(r)
-        this.userId = this.user1["_id"]
+        this.test = Object.values(r)
+        // console.log(this.test)
+        this.decks = this.test
+        console.log(this.decks[0]["title"])
+        this.navCtrl.navigateForward("/decks");
         
-        return  this.mazo
       }
   ).catch( e => {
-      alert('error fetching data');
+      // alert('no mazos disponibles');
+      this.navCtrl.navigateForward("/decks");
   });
     
 
@@ -80,7 +86,8 @@ export class BaseService {
         //  console.log(this.user1["_id"])
          if(this.user[0]){
            this.userId = this.user1["_id"]
-           this.navCtrl.navigateForward("/decks");
+           this.getMazoByUserId(this.userId)
+            // this.navCtrl.navigateForward("/decks");
 
          }
 
@@ -91,16 +98,17 @@ export class BaseService {
   })
      
   }
-
+ 
   getUserId(){
     
     // console.log(this.user1["_id"])
      return this.userId
   }
-  getMazo(){
-    
-    // console.log(this.user1["_id"])
+  getMazoId(){
     return this.deckId
+  }
+  getDecks(){
+    return this.decks
   }
 
   createDeck(title:string, description : string){

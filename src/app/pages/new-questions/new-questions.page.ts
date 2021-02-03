@@ -52,6 +52,7 @@ export class NewQuestionsPage implements OnInit {
     for(let i = 0;i< this.questions.length ; i++){
         this.baseService.createQuestion(this.questions[i]["question"],this.questions[i]["answer"])
     }
-    this.navCtrl.navigateForward("/decks");
+    var aux = this.baseService.getUserId()
+    this.baseService.getMazoByUserId(aux)
   }
 }
