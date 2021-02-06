@@ -1,9 +1,10 @@
 import { AppSettings } from '../../services/app-settings';
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { DeckService } from '../../services/deck-service';
 import { ModalController } from '@ionic/angular';
 import { IntroPage } from '../intro-page/intro-page.page';
-
+import { Mazo } from 'src/app/models/mazo.model';
+@Injectable({ providedIn: 'root' })
 @Component({
   selector: 'app-decks',
   templateUrl: 'decks.page.html',
@@ -12,7 +13,7 @@ import { IntroPage } from '../intro-page/intro-page.page';
 })
 export class DecksPage {
 
-  data = {}
+  public data = {}
   public ids : string[] = []
   // el id del mazos son strings
   // public ids : string[]  = []
@@ -47,11 +48,22 @@ export class DecksPage {
      return await modal.present();
   }
 
-  // onItemClick(event) {
-  //   console.warn(event);
-  //   console.log('onItemClick');
-  // }
-
+  onItemClick(event) {
+    // console.warn(event);
+    // console.log('hola holita');
+  }
+  public setData(){
+    console.log("hola saliufhkasiugiluas")
+    var hey = {
+      'id':"1", 
+      'title':"no se",
+      'subtitle': "si anira be",
+      "image": "assets/imgs/decks/python.png",
+      "iconDelete" : "trash",
+      "msgDelete" : "Eliminar",
+  }
+    this.data["items"].push(hey)
+  }
   onDelete(event) {
     console.warn(event);
     console.log('onDelete');

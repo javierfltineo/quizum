@@ -79,9 +79,9 @@ export class DeckService implements IService {
 
         var aux = this.baseService.getDecks()
         for(let i = 0; i< aux.length ; i++){
-            console.log(aux[i]["_id"])
-            console.log(aux[i]["title"])
-            console.log(aux[i]["description"])
+            // console.log(aux[i]["_id"])
+            // console.log(aux[i]["title"])
+            // console.log(aux[i]["description"])
             decks[i] = {
                 'id':aux[i]["_id"], 
                 'title':aux[i]["title"],

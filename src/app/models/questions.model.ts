@@ -1,7 +1,7 @@
 export class Questions {
     constructor(
         public position: number = 0,
-        public question: string = "",
+        public description: string = "",
         public answer: string = "",
         // public correct: boolean = false,
         // public dificulty: string = "",

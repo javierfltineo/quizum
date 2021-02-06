@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { Questions } from 'src/app/models/questions.model';
 import { AppSettings } from 'src/app/services/app-settings';
 import { BaseService } from 'src/app/services/meus/base.service';
+import { DecksPage } from '../decks/decks.page';
 import { IntroPage } from '../intro-page/intro-page.page';
 
 @Component({
@@ -18,7 +19,7 @@ export class NewDeckPage  {
   
   
   // constructor(public baseService: BaseService) { }
-  constructor(public baseService:BaseService) { }
+  constructor(public baseService:BaseService,public  r:DecksPage) { }
 
   ngOnInit() {
     this.data = {
@@ -33,8 +34,11 @@ export class NewDeckPage  {
   
   saveDeck(){
     console.log(this.deckName, this.deckDescription)
+    
+    this.r.setData()
     this.baseService.createDeck(this.deckName,this.deckDescription)
     }
+    
   }
   
 

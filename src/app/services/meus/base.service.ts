@@ -27,6 +27,9 @@ export class BaseService {
   public test : any
   public decks: Mazo[] = []
 
+  public test2 : any
+  public questions: Questions[] = []
+
   //Ids
   public userId: string
   public deckId : string
@@ -72,9 +75,24 @@ export class BaseService {
       // alert('no mazos disponibles');
       this.navCtrl.navigateForward("/decks");
   });
-    
+  }
 
-   }
+  getQuestionsByMazoId(mazoId:string) {
+    this.httpClient.get(environment.baseUrl  + `question/deck/`+ mazoId, {}).toPromise().then(
+      r => {
+         
+        this.test2 = Object.values(r)
+        
+        this.questions = this.test2
+        console.log(this.questions)
+        this.navCtrl.navigateForward("/deck");
+        
+      }
+  ).catch( e => {
+      // alert('no mazos disponibles');
+      // this.navCtrl.navigateForward("/decks");
+  });
+  }
   
   login(username:string, password:string){
     this.httpClient.post(environment.baseUrl  + `users/login`, {"username":username , "password":password}).toPromise().then(
@@ -83,25 +101,24 @@ export class BaseService {
         this.user = Object.values(r)
         
         this.user1 = this.user[1]
-        //  console.log(this.user1["_id"])
+         console.log(this.user[0])
+        
          if(this.user[0]){
            this.userId = this.user1["_id"]
            this.getMazoByUserId(this.userId)
             // this.navCtrl.navigateForward("/decks");
-
+            
          }
-
+         
           
       }
   ).catch( e => {
-      alert('error fetching data');
+     
   })
      
   }
  
   getUserId(){
-    
-    // console.log(this.user1["_id"])
      return this.userId
   }
   getMazoId(){
@@ -109,6 +126,9 @@ export class BaseService {
   }
   getDecks(){
     return this.decks
+  }
+  getQuestions(){
+    return this.questions
   }
 
   createDeck(title:string, description : string){

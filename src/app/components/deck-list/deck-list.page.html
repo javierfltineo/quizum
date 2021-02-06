@@ -10,7 +10,7 @@
             <p>{{data.subtitle}}</p>
           </ion-label>
         </ion-list-header>
-        <ion-item-sliding *ngFor="let item of data.items" #slidingItem>
+        <ion-item-sliding *ngFor="let item of data.items" #slidingItem (click)="proba(item.id)">
           <ion-item class="default-item box-shadow" lines="none"
           (click)="onItemClickFunc(item, $event)">
             <!-- Images -->

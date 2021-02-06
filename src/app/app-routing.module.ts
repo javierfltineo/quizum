@@ -12,8 +12,12 @@ const routes: Routes = [
     path: 'decks',
     loadChildren: () => import('./pages/decks/decks.module').then(m => m.DecksModule)
   },
+  // {
+  //   path: 'deck/:id',
+  //   loadChildren: () => import('./pages/deck/deck.module').then(m => m.DeckModule)
+  // },
   {
-    path: 'deck/:id',
+    path: 'deck',
     loadChildren: () => import('./pages/deck/deck.module').then(m => m.DeckModule)
   },
   {

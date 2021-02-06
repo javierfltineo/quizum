@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter, Input, ViewChild, OnChanges } from '@angular/core';
+import { BaseService } from 'src/app/services/meus/base.service';
 
 @Component({
   selector: 'cs-deck-list',
@@ -14,7 +15,7 @@ export class DeckListPage implements OnChanges {
   @Output() onUndo = new EventEmitter();
   @Output() onDelete = new EventEmitter();
 
-  constructor() { }
+  constructor(public baseService: BaseService) { }
 
   ngOnChanges(changes: { [propKey: string]: any }) {
     this.data = changes['data'].currentValue;
@@ -37,7 +38,10 @@ export class DeckListPage implements OnChanges {
       this.data.items.splice(index, 1);
     }
   }
-  
+  proba(mazoId:string){
+    console.log(mazoId)
+    this.baseService.getQuestionsByMazoId(mazoId)
+  }
 
   // onItemClickFunc(item) {
   //   if (event) {

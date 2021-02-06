@@ -51,7 +51,7 @@ export class LoginPage implements OnInit {
     console.log(this.username, this.password);
     this.baseService.login(this.username, this.password)
     
-    this.badLogin = true
+    
       
     
   }

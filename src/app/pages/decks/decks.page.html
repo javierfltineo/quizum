@@ -1,4 +1,5 @@
 <ion-app>
+ 
   <!-- Header -->
   <ion-header>
     <ion-toolbar>
@@ -10,12 +11,19 @@
   </ion-header>
   <!-- Content -->
   <ion-content>
-    <cs-deck-list
+    <!-- <cs-deck-list
       [data]="data"
       (onUndo)="onUndo($event)"
       (onDelete)="onDelete($event)"
       routerLink="/deck/data.id"
       (onItemClick)="onItemClick($event)">
+    </cs-deck-list> -->
+    <cs-deck-list
+      [data]="data"
+      (onUndo)="onUndo($event)"
+      (onDelete)="onDelete($event)"
+      
+      (click)="onItemClick($event)">
     </cs-deck-list>
   </ion-content>
   <div class = "bar bar-footer bar-assertive">

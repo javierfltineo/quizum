@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { DeckService } from '../../services/deck-service';
 import { IonItem, ModalController } from '@ionic/angular';
 import { IntroPage } from '../intro-page/intro-page.page';
+import { BaseService } from 'src/app/services/meus/base.service';
+import { Questions } from 'src/app/models/questions.model';
 
 // import { BaseService } from 'src/app/services/meus/base.service';
 
@@ -17,12 +19,11 @@ export class DeckPage {
   
   data = {}
   item = {}
-
+  questions: Questions[] = []
 
   //Creadas por Artur
   maxQuestions : number;
   
-  questions : string[] = []
 
   questionShown :any
 
@@ -32,7 +33,7 @@ export class DeckPage {
 
   constructor(
     
-    // public userService:BaseService,
+    public baseService:BaseService,
     public modalController: ModalController) { 
         this.item = {
           'id' : 'asdfsdg34ver',
@@ -44,7 +45,8 @@ export class DeckPage {
         }
       let showWizard = localStorage.getItem("SHOW_START_WIZARD");
       
-      this.pruebaPreguntas()
+      // this.pruebaPreguntas()
+      this.getQuestions()
       
       if (AppSettings.SHOW_START_WIZARD && !showWizard) {
         this.openModal()
@@ -67,26 +69,7 @@ export class DeckPage {
     console.log('onDelete');
   }
 
-//Pruebas de conexiones
-  //  getMazo(){
-  //    console.log("hola")
-  // //   var aux =   this.userService.getMazoByUserId().toPromise().then(
-  // //     r => {
-          
-  // //       this.mazo = Object.values(r)
-          
-  // //     }
-  // // ).catch( e => {
-  // //     alert('error fetching data');
-  // // })
-  //   const mazo = this.userService.getMazoByUserId()
-  //   console.log(mazo)
-  //     console.log(this.mazo[0])
-  //     console.log("caracola")
-  //     this.mazo = mazo
-  //  }
-  
-  pruebaPreguntas(){
+pruebaPreguntas(){
     this.items = [
   		{"n":1,"pregunta": 'Cuál es la raíz cuadrada de 25', "respuesta": '5','mostrar':false},
   		{"n":2,"pregunta": 'Cuál es la raíz cuadrada de 36', "respuesta": '6','mostrar':false},
@@ -96,6 +79,20 @@ export class DeckPage {
      this.questionShown = this.items[0]
      this.maxQuestions =  Object.keys(this.items).length
      
+  }
+  getQuestions(){
+     this.questions = this.baseService.getQuestions()
+
+    for(let i = 0; i< this.questions.length;i++){
+      this.items[i]={
+        "n":i+1,
+        "pregunta":this.questions[i].description,
+        "respuesta":this.questions[i].answer,
+        "mostrar":false
+      }
+    }
+    this.questionShown = this.items[0]
+     this.maxQuestions =  Object.keys(this.items).length
   }
 
   changeQuestion(n:number, up :boolean){
