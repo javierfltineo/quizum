@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, Input, ViewChild, OnChanges } from '@angular/core';
-import { BaseService } from 'src/app/services/meus/base.service';
+import { BaseService } from 'src/app/services/base.service';
 
 @Component({
   selector: 'cs-deck-list',
@@ -29,16 +29,16 @@ export class DeckListPage implements OnChanges {
   }
 
   onDeleteFunc = (item: any): void => {
-    if (event) {
-      event.stopPropagation();
-    }
-    this.dynamicList.closeSlidingItems()
-    const index = this.data.items.indexOf(item);
-    if (index > -1) {
-      this.data.items.splice(index, 1);
-    }
+     this.dynamicList.closeSlidingItems()
+     const index = this.data.items.indexOf(item);
+     if (index > -1) {
+       this.data.items.splice(index, 1);
+     }
+    this.baseService.deleteDeck(item.id)
+    console.log(item.id)
   }
-  proba(mazoId:string){
+  
+  openDeck(mazoId:string){
     console.log(mazoId)
     this.baseService.getQuestionsByMazoId(mazoId)
   }

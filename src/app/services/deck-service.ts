@@ -8,7 +8,7 @@ import { LoadingService } from './loading-service';
 import { Mazo } from '../models/mazo.model';
 
 
-import { BaseService } from './meus/base.service';
+import { BaseService } from './base.service';
 
 
 @Injectable({ providedIn: 'root' })

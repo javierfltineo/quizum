@@ -2,7 +2,7 @@ import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import {AppComponent} from '../../app.component';
 
-import { BaseService } from 'src/app/services/meus/base.service';
+import { BaseService } from 'src/app/services/base.service';
 import { User } from 'src/app/models/user.model';
 
 
@@ -48,7 +48,6 @@ export class LoginPage implements OnInit {
   }
   
   onLogin(event) {
-    console.log(this.username, this.password);
     this.baseService.login(this.username, this.password)
     
     

@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 
 export class BaseService {
   public httpClient: HttpClient
-  public mazo : any[] = []
+ 
 
   public user : any 
   public user1 : User
@@ -33,7 +33,6 @@ export class BaseService {
   //Ids
   public userId: string
   public deckId : string
-  // public questionId : string
 
 
   constructor(
@@ -44,28 +43,11 @@ export class BaseService {
     this.httpClient = new HttpClient(handler);
   }
 
-  getAll() {
-    return this.httpClient.get(environment.baseUrl , {})
-  }
-
-  getById(id: string) {
-    return this.httpClient.get(environment.baseUrl  + "/" + id, {})
-  }
-
-  save(data: any) {
-    return this.httpClient.post(environment.baseUrl , data)
-  }
-
-  delete(id: string) {
-    return this.httpClient.delete(environment.baseUrl )
-  }
-
- getMazoByUserId(userId:string) {
+  getMazoByUserId(userId:string) {
     this.httpClient.get(environment.baseUrl  + `deck/user/`+ userId, {}).toPromise().then(
       r => {
          
         this.test = Object.values(r)
-        // console.log(this.test)
         this.decks = this.test
         console.log(this.decks[0]["title"])
         this.navCtrl.navigateForward("/decks");
@@ -85,12 +67,18 @@ export class BaseService {
         
         this.questions = this.test2
         console.log(this.questions)
-        this.navCtrl.navigateForward("/deck");
+        if(this.questions.length == 0){
+          alert('No questions disponibles');
+          
+        }else{
+          this.navCtrl.navigateForward("/deck");
+        }
+        
         
       }
   ).catch( e => {
-      // alert('no mazos disponibles');
-      // this.navCtrl.navigateForward("/decks");
+       alert('problem');
+      this.navCtrl.navigateForward("/decks");
   });
   }
   
@@ -101,12 +89,10 @@ export class BaseService {
         this.user = Object.values(r)
         
         this.user1 = this.user[1]
-         console.log(this.user[0])
         
          if(this.user[0]){
            this.userId = this.user1["_id"]
            this.getMazoByUserId(this.userId)
-            // this.navCtrl.navigateForward("/decks");
             
          }
          
@@ -139,8 +125,6 @@ export class BaseService {
           this.deck = Object.values(r)
           
           this.deck1 = this.deck[1]
-
-          // this.deckId = this.deck1[1]
           
           if(this.deck[0]){
             this.deckId = this.deck1["_id"]
@@ -149,24 +133,27 @@ export class BaseService {
           }  
         }
     ).catch( e => {
-        alert('error fetching data');
+        alert('Error creating deck');
     })
   }
 
   createQuestion(description:string, answer : string){
-    console.log(this.userId)
-    console.log(this.deckId)
       this.httpClient.post(environment.baseUrl  + `question`, {"description":description , "answer":answer, "creator":this.userId,"deck":this.deckId}).toPromise().then(
         r => {
-            
-          // this.question = Object.values(r)
-          
-          // this.question1 = this.question[1]
            console.log("Question upload")
         }
     ).catch( e => {
-        alert('error fetching data');
+        alert('Error creating question');
     })
+  }
+  deleteDeck(deckId:string){
+    this.httpClient.delete(environment.baseUrl  + `deck/`+ deckId, {}).toPromise().then(
+      r => {
+         console.log("Deck with id "+  deckId +"has been deleted")
+      }
+  ).catch( e => {
+      alert('Error deleting deck');
+  })
   }
 }
 

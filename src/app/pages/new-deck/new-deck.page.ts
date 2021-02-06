@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Questions } from 'src/app/models/questions.model';
 import { AppSettings } from 'src/app/services/app-settings';
-import { BaseService } from 'src/app/services/meus/base.service';
+import { BaseService } from 'src/app/services/base.service';
 import { DecksPage } from '../decks/decks.page';
 import { IntroPage } from '../intro-page/intro-page.page';
 

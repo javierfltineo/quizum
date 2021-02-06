@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Questions } from 'src/app/models/questions.model';
-import { BaseService } from 'src/app/services/meus/base.service';
+import { BaseService } from 'src/app/services/base.service';
 
 @Component({
   selector: 'app-new-questions',

@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { DeckService } from '../../services/deck-service';
 import { IonItem, ModalController } from '@ionic/angular';
 import { IntroPage } from '../intro-page/intro-page.page';
-import { BaseService } from 'src/app/services/meus/base.service';
+import { BaseService } from 'src/app/services/base.service';
 import { Questions } from 'src/app/models/questions.model';
 
 // import { BaseService } from 'src/app/services/meus/base.service';
@@ -64,10 +64,10 @@ export class DeckPage {
   //   console.log('onItemClick');
   // }
 
-  onDelete(event) {
-    console.warn(event);
-    console.log('onDelete');
-  }
+  // onDelete(event) {
+  //   console.warn(event);
+  //   console.log('onDelete');
+  // }
 
 pruebaPreguntas(){
     this.items = [
