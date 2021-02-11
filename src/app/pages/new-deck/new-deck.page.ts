@@ -35,7 +35,6 @@ export class NewDeckPage  {
   saveDeck(){
     console.log(this.deckName, this.deckDescription)
     
-    this.r.setData()
     this.baseService.createDeck(this.deckName,this.deckDescription)
     }
     

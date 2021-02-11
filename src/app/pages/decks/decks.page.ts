@@ -18,30 +18,49 @@ export class DecksPage {
   // el id del mazos son strings
   // public ids : string[]  = []
   constructor(
-    private service:DeckService, 
+    public service:DeckService, 
     public modalController: ModalController) { 
-        this.service.load(service.getAllThemes()[1]).subscribe(d => {
-            this.data = d;
-            console.log(this.data);
-            var a = this.data["items"]
-            //[0]["id"]
-            console.log(a);
-            console.log(a.length);
-            for(let i = 0; i<a.length ;i++){
+        // this.service.load(service.getAllThemes()[1]).subscribe(d => {
+        //     this.data = d;
+        //     console.log(this.data);
+        //     var a = this.data["items"]
+        //     //[0]["id"]
+        //     console.log(a);
+        //     console.log(a.length);
+        //     for(let i = 0; i<a.length ;i++){
               
               
 
-              this.ids[i]="/deck/" + a[i]["id"].toString()
-              console.log(this.ids[i]);
+        //       this.ids[i]="/deck/" + a[i]["id"].toString()
+        //       console.log(this.ids[i]);
               
-            }
-        });
+        //     }
+        // });
       let showWizard = localStorage.getItem("SHOW_START_WIZARD");
 
       if (AppSettings.SHOW_START_WIZARD && !showWizard) {
         this.openModal()
       }
   }
+  ionViewWillEnter(){
+    this.service.load(this.service.getAllThemes()[1]).subscribe(d => {
+      this.data = d;
+      console.log(this.data);
+      var a = this.data["items"]
+      //[0]["id"]
+      console.log(a);
+      console.log(a.length);
+      for(let i = 0; i<a.length ;i++){
+        
+        
+
+        this.ids[i]="/deck/" + a[i]["id"].toString()
+        console.log(this.ids[i]);
+        
+      }
+  });
+  }
+
 
   async openModal() {
     let modal = await this.modalController.create({component: IntroPage});
@@ -52,18 +71,7 @@ export class DecksPage {
     // console.warn(event);
     // console.log('hola holita');
   }
-  public setData(){
-    console.log("hola saliufhkasiugiluas")
-    var hey = {
-      'id':"1", 
-      'title':"no se",
-      'subtitle': "si anira be",
-      "image": "assets/imgs/decks/python.png",
-      "iconDelete" : "trash",
-      "msgDelete" : "Eliminar",
-  }
-    this.data["items"].push(hey)
-  }
+ 
   onDelete(event) {
     console.warn(event);
     console.log('onDelete');

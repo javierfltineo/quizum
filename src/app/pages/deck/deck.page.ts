@@ -6,7 +6,7 @@ import { IntroPage } from '../intro-page/intro-page.page';
 import { BaseService } from 'src/app/services/base.service';
 import { Questions } from 'src/app/models/questions.model';
 
-// import { BaseService } from 'src/app/services/meus/base.service';
+
 
 
 @Component({
@@ -68,27 +68,15 @@ export class DeckPage {
   //   console.warn(event);
   //   console.log('onDelete');
   // }
-
-pruebaPreguntas(){
-    this.items = [
-  		{"n":1,"pregunta": 'Cuál es la raíz cuadrada de 25', "respuesta": '5','mostrar':false},
-  		{"n":2,"pregunta": 'Cuál es la raíz cuadrada de 36', "respuesta": '6','mostrar':false},
-      {"n":3,"pregunta": 'Cuál es la raíz cuadrada de 49', "respuesta": '7','mostrar':false},
-      {"n":4,"pregunta": ' Un español medio pierde alrededor de tres calcetines al año. Si los multiplicamos por toda la población española, eso supone un total de unos 120 millones de calcetines perdidos. ¿Dónde están esos 120 millones de calcetines?', "respuesta": 'Solo Dios lo sabe','mostrar':false}
-     ];
-     this.questionShown = this.items[0]
-     this.maxQuestions =  Object.keys(this.items).length
-     
-  }
   getQuestions(){
      this.questions = this.baseService.getQuestions()
 
     for(let i = 0; i< this.questions.length;i++){
       this.items[i]={
         "n":i+1,
-        "pregunta":this.questions[i].description,
-        "respuesta":this.questions[i].answer,
-        "mostrar":false
+        "question":this.questions[i].description,
+        "answer":this.questions[i].answer,
+        "show":false
       }
     }
     this.questionShown = this.items[0]
@@ -105,15 +93,16 @@ pruebaPreguntas(){
     }
   }
   toogleAnswer(n :number, flashcard:IonItem){
-    var n = n -1;
-    if( !this.questionShown.mostrar){
-      this.flip_card = true;
-      this.questionShown.mostrar = true;
-    }else{
-      this.flip_card = false;
-      this.questionShown.mostrar = false;
-    }
-      
+    // var n = n -1;
+    // if( !this.questionShown.mostrar){
+    //   this.flip_card = true;
+    //   this.questionShown.mostrar = true;
+    // }else{
+    //   this.flip_card = false;
+    //   this.questionShown.mostrar = false;
+    // }
+     this.flip_card = !this.flip_card 
+     this.questionShown.show = !this.questionShown.show
   }
   
  

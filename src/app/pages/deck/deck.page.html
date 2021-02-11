@@ -44,7 +44,7 @@
           <ion-item class="box-shadow border-radius input" lines="none" style="max-height: 135px;">
             <p>¿ {{item.pregunta}} ?</p>
           </ion-item>
-          <ion-item  *ngIf="item.mostrar" class="box-shadow border-radius input " lines="none" style="max-height: 135px;">
+          <ion-item  *ngIf="item.show" class="box-shadow border-radius input " lines="none" style="max-height: 135px;">
             <p> {{item.respuesta}} </p>
           </ion-item>
           <ion-button class="default-button box-shadow ion-text-capitalize"
@@ -65,13 +65,13 @@
         <ion-col size="12" class="textarea" style="max-height: 135px;">
           <ion-item class="box-shadow border-radius input flashcard" #flashcard lines="none" style="max-height: 135px;"
             [ngClass]="{'flip': flip_card == true, 'unflip': flip_card == false}" >
-            <p *ngIf="!questionShown.mostrar">¿ {{questionShown.pregunta}} ?</p>
-            <p *ngIf="questionShown.mostrar"> {{questionShown.respuesta}} </p>
+            <p *ngIf="!questionShown.show">¿ {{questionShown.question}} ?</p>
+            <p *ngIf="questionShown.show"> {{questionShown.answer}} </p>
           </ion-item>
           <ion-button class="default-button box-shadow ion-text-capitalize"
               expand="block" (click)="toogleAnswer()"> 
-              <span *ngIf="!questionShown.mostrar">Respuesta</span>
-              <span *ngIf="questionShown.mostrar">Pregunta</span>
+              <span *ngIf="!questionShown.show">Respuesta</span>
+              <span *ngIf="questionShown.show">Pregunta</span>
           </ion-button>
           
         </ion-col>
