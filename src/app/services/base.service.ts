@@ -83,6 +83,9 @@ export class BaseService {
   }
   
   login(username:string, password:string){
+    console.log(username, password)
+    var url = "http://192.168.1.14:80/"
+    console.log(url)
     this.httpClient.post(environment.baseUrl  + `users/login`, {"username":username , "password":password}).toPromise().then(
       r => {
           
@@ -99,9 +102,9 @@ export class BaseService {
           
       }
   ).catch( e => {
-     
+     console.log("fallo",e)
   })
-     
+     console.log("hola")
   }
  
   getUserId(){
