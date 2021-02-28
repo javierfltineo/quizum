@@ -101,7 +101,7 @@ export class BaseService {
            this.userId = this.user1["_id"]
           this.getMazoByUserId(this.userId)
           // this.getMazoByUserId2(this.userId)
-            
+            // return false
          }
          
           
@@ -109,7 +109,7 @@ export class BaseService {
   ).catch( e => {
      console.log("fallo",e)
   })
-     console.log("hola")
+    return true
   }
  
   getUserId(){
