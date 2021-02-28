@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   //url del servidor nodejs
-  // baseUrl: "http://localhost:3000/"
-  baseUrl: "http://192.168.1.14:80/"
+   baseUrl: "http://localhost:3000/"
+  // baseUrl: "http://192.168.1.14:80/"
 };
 
 /*

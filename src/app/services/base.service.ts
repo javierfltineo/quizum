@@ -58,6 +58,10 @@ export class BaseService {
       this.navCtrl.navigateForward("/decks");
   });
   }
+  async getMazoByUserId2(userId:string){
+    var aux = await this.httpClient.get(environment.baseUrl  + `deck/user/`+ userId, {}).toPromise() as Questions
+    console.log(aux)
+  }
 
   getQuestionsByMazoId(mazoId:string) {
     this.httpClient.get(environment.baseUrl  + `question/deck/`+ mazoId, {}).toPromise().then(
@@ -84,8 +88,8 @@ export class BaseService {
   
   login(username:string, password:string){
     console.log(username, password)
-    var url = "http://192.168.1.14:80/"
-    console.log(url)
+    // var url = "http://192.168.1.14:80/"
+    // console.log(url)
     this.httpClient.post(environment.baseUrl  + `users/login`, {"username":username , "password":password}).toPromise().then(
       r => {
           
@@ -95,7 +99,8 @@ export class BaseService {
         
          if(this.user[0]){
            this.userId = this.user1["_id"]
-           this.getMazoByUserId(this.userId)
+          this.getMazoByUserId(this.userId)
+          // this.getMazoByUserId2(this.userId)
             
          }
          
