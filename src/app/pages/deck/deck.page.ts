@@ -69,7 +69,10 @@ export class DeckPage {
   //   console.log('onDelete');
   // }
   getQuestions(){
-     this.questions = this.baseService.getQuestions()
+    //  this.questions = this.baseService.getQuestions()
+
+
+     this.questions = JSON.parse(localStorage.getItem('questions'));
 
     for(let i = 0; i< this.questions.length;i++){
       this.items[i]={

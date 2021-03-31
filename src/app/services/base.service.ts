@@ -49,6 +49,7 @@ export class BaseService {
          
         this.test = Object.values(r)
         this.decks = this.test
+        localStorage.setItem('decks',JSON.stringify(this.decks));
         console.log(this.decks[0]["title"])
         this.navCtrl.navigateForward("/decks");
         
@@ -63,27 +64,40 @@ export class BaseService {
     console.log(aux)
   }
 
-  getQuestionsByMazoId(mazoId:string) {
+  getQuestionsByMazoId(mazoId:string, route:string) {
+   
     this.httpClient.get(environment.baseUrl  + `question/deck/`+ mazoId, {}).toPromise().then(
       r => {
          
         this.test2 = Object.values(r)
         
         this.questions = this.test2
+        localStorage.setItem('questions',JSON.stringify(this.questions));
         console.log(this.questions)
         if(this.questions.length == 0){
           alert('No questions disponibles');
           
         }else{
-          this.navCtrl.navigateForward("/deck");
+          this.navigateTo(route)
+          //  this.navCtrl.navigateForward("/edit-deck");
         }
         
         
       }
   ).catch( e => {
        alert('problem');
-      this.navCtrl.navigateForward("/decks");
+       this.navigateTo(route)
+      // this.navCtrl.navigateForward("/decks");
   });
+  }
+
+  async getQuestionsByMazoId2(mazoId:string) {
+    var questions = await this.httpClient.get(environment.baseUrl  + `question/deck/`+ mazoId, {}).toPromise()
+     if(questions){
+       return questions
+     }else{
+       return false
+     }
   }
   
   login(username:string, password:string){
@@ -99,6 +113,8 @@ export class BaseService {
         
          if(this.user[0]){
            this.userId = this.user1["_id"]
+           localStorage.setItem('user',JSON.stringify(this.user1));
+           
           this.getMazoByUserId(this.userId)
           // this.getMazoByUserId2(this.userId)
             // return false
@@ -110,6 +126,10 @@ export class BaseService {
      console.log("fallo",e)
   })
     return true
+  }
+  async login2(username:string, password :string){
+    var aux = await this.httpClient.post(environment.baseUrl  + `users/login`, {"username":username , "password":password}).toPromise() as User
+    console.log(aux)
   }
  
   getUserId(){
@@ -127,6 +147,8 @@ export class BaseService {
 
   createDeck(title:string, description : string){
     console.log(this.userId)
+    this.user1 = JSON.parse(localStorage.getItem('user'));
+    this.userId = this.user1._id
       this.httpClient.post(environment.baseUrl  + `deck`, {"title":title , "description":description, "creator":this.userId}).toPromise().then(
         r => {
             
@@ -162,6 +184,10 @@ export class BaseService {
   ).catch( e => {
       alert('Error deleting deck');
   })
+  }
+
+  navigateTo(route :string){
+    this.navCtrl.navigateForward(route);
   }
 }
 

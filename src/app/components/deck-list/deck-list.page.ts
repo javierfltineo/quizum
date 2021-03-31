@@ -39,15 +39,24 @@ export class DeckListPage implements OnChanges {
   }
   
   openDeck(mazoId:string){
-    console.log(mazoId)
-    this.baseService.getQuestionsByMazoId(mazoId)
+     console.log("open")
+     this.baseService.getQuestionsByMazoId(mazoId,"/deck")
   }
 
-  // onItemClickFunc(item) {
-  //   if (event) {
-  //     event.stopPropagation();
-  //   }
-  //   this.onItemClick.emit(item);
-  // }
+  editDeck(deck:any){
+
+    console.log("editar")
+    this.baseService.getQuestionsByMazoId(deck.id,"/edit-deck")
+    // this.navCtrl.navigateForward("/decks");
+
+  }
+   onItemClickFunc(item) {
+    //  if (event) {
+    //    event.stopPropagation();
+    //  }
+    //  this.onItemClick.emit(item);
+    console.log(item)
+    this.openDeck(item.id)
+   }
   
 }

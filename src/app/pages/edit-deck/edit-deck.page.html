@@ -1,0 +1,65 @@
+<!-- lOGIN FROMA --COMPONENT 1 -->
+<ion-app>
+  <!-- Header -->
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>{{data.toolbarTitle}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+<ion-page class="ion-page">
+  <!-- Content -->
+  <ion-content  class="transparent background-size">
+    <ion-grid no-padding>
+      <ion-row class="ion-align-items-center ion-padding-horizontal" >
+           <ion-row class="ion-no-padding ion-margin-top">
+              <ion-col size="12">
+                <ion-button class="box-shadow default-button ion-text-capitalize button-top" expand="block"
+                  (click)="createQuestion()">{{data.buttonCreate}}
+                </ion-button>
+              </ion-col>
+            </ion-row>
+       </ion-row>
+
+      <div class="padding_top">
+          <div class="border question"  *ngFor="let question of questions  " >
+              <p>{{data.question}}  {{question.position}} </p>
+              <p>{{data.questionText}}</p>
+              <ion-row class="ion-align-items-center ion-padding-horizontal" >
+                
+                <ion-textarea rows="3" 
+                class="border" 
+                [(ngModel)] = "question.question"
+                placeholder={{data.textareaPlaceholder}}>
+        
+                </ion-textarea>
+              </ion-row>
+              <p>{{data.answerText}}</p>
+              <ion-row class="ion-align-items-center ion-padding-horizontal" >
+                
+                <ion-textarea rows="3" 
+                class="border" 
+                [(ngModel)] = "question.answer"
+                placeholder={{data.textareaPlaceholder2}}>
+        
+                </ion-textarea>
+              </ion-row>
+              <ion-button class="box-shadow default-button ion-text-capitalize button-top" expand="block"
+                  (click)="createQuestion()">{{data.buttonCreate}}
+                </ion-button>
+          </div>
+      </div>
+
+      <ion-row class="ion-no-padding ion-margin-top">
+        <ion-button class="box-shadow default-button ion-text-capitalize
+            button-bottom" expand="block"
+            (click)="saveDeck()">{{data.buttonSave}}
+          </ion-button>
+        </ion-row>
+    </ion-grid>
+    
+  </ion-content>
+</ion-page>
+</ion-app>

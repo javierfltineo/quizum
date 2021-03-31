@@ -47,15 +47,16 @@ export class LoginPage implements OnInit {
     
   }
   
-  onLogin() {
+  async onLogin() {
     // if(this.username==""){
     //   this.isUsernameValid = true  
     // }
     // if(this.password==""){
     //   this.isPasswordValid = true
     // }
+    // var aux = this.baseService.login(this.username, this.password)
     var aux = this.baseService.login(this.username, this.password)
-    this.isUsernameValid = !aux  
+    
     
     
     

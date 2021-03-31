@@ -77,7 +77,10 @@ export class DeckService implements IService {
     getMazos(){
         var decks = []
 
-        var aux = this.baseService.getDecks()
+        // var aux = this.baseService.getDecks()
+
+
+        var aux =   JSON.parse(localStorage.getItem('decks'));
         for(let i = 0; i< aux.length ; i++){
             // console.log(aux[i]["_id"])
             // console.log(aux[i]["title"])

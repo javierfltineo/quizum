@@ -29,6 +29,7 @@ import { SuperTabsModule } from '@ionic-super-tabs/angular';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

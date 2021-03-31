@@ -32,6 +32,11 @@ const routes: Routes = [
     path: 'new-questions',
     loadChildren: () => import('./pages/new-questions/new-questions.module').then( m => m.NewQuestionsPageModule)
   },
+  {
+    path: 'edit-deck',
+    loadChildren: () => import('./pages/edit-deck/edit-deck.module').then( m => m.EditDeckPageModule)
+  },
+
 
   
 
